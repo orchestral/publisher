@@ -1,0 +1,34 @@
+{
+	"name": "orchestra/publisher",
+	"description": "Orchestra Platform 2 Publisher Component",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Mior Muhammad Zaki",
+			"email": "crynobone@gmail.com"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"Orchestra\\Publisher\\" : "src/Publisher/"
+		}
+	},
+	"require": {
+		"php": ">=5.3.3",
+		"orchestra/support": "2.1.*"
+	},
+	"require-dev": {
+		"mockery/mockery": "0.9.*",
+		"illuminate/container": "4.1.*"
+	},
+	"suggest": {
+		"laravel/framework": "Allow using orchestra/extension component outside of Orchestra Platform 2",
+		"orchestra/foundation": "Allow using orchestra/extension with Orchestra Platform 2"
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "2.1-dev"
+		}
+	},
+	"minimum-stability": "dev"
+}

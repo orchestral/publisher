@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Orchestra\Publisher Test Suite" tests="9" assertions="7" failures="0" errors="0" time="0.289756">
+    <testsuite name="Orchestra\Publisher\TestCase\AssetManagerTest" file="/Users/crynobone/Projects/orchestra/publisher/tests/AssetManagerTest.php" tests="6" assertions="7" failures="0" errors="0" time="0.164046">
+      <testcase name="testPublishMethod" class="Orchestra\Publisher\TestCase\AssetManagerTest" file="/Users/crynobone/Projects/orchestra/publisher/tests/AssetManagerTest.php" line="38" assertions="1" time="0.040375"/>
+      <testcase name="testExtensionMethod" class="Orchestra\Publisher\TestCase\AssetManagerTest" file="/Users/crynobone/Projects/orchestra/publisher/tests/AssetManagerTest.php" line="52" assertions="2" time="0.061358"/>
+      <testcase name="testExtensionMethodThrowsException" class="Orchestra\Publisher\TestCase\AssetManagerTest" file="/Users/crynobone/Projects/orchestra/publisher/tests/AssetManagerTest.php" line="80" assertions="1" time="0.027954"/>
+      <testcase name="testFoundationMethod" class="Orchestra\Publisher\TestCase\AssetManagerTest" file="/Users/crynobone/Projects/orchestra/publisher/tests/AssetManagerTest.php" line="103" assertions="1" time="0.012226"/>
+      <testcase name="testFoundationMethodWhenPublicDirectoryDoesNotExists" class="Orchestra\Publisher\TestCase\AssetManagerTest" file="/Users/crynobone/Projects/orchestra/publisher/tests/AssetManagerTest.php" line="126" assertions="1" time="0.009312"/>
+      <testcase name="testFoundationMethodThrowsException" class="Orchestra\Publisher\TestCase\AssetManagerTest" file="/Users/crynobone/Projects/orchestra/publisher/tests/AssetManagerTest.php" line="147" assertions="1" time="0.012821"/>
+    </testsuite>
+    <testsuite name="Orchestra\Publisher\TestCase\MigrateManagerTest" file="/Users/crynobone/Projects/orchestra/publisher/tests/MigrateManagerTest.php" tests="3" assertions="0" failures="0" errors="0" time="0.125710">
+      <testcase name="testRunMethod" class="Orchestra\Publisher\TestCase\MigrateManagerTest" file="/Users/crynobone/Projects/orchestra/publisher/tests/MigrateManagerTest.php" line="38" assertions="0" time="0.034958"/>
+      <testcase name="testExtensionMethod" class="Orchestra\Publisher\TestCase\MigrateManagerTest" file="/Users/crynobone/Projects/orchestra/publisher/tests/MigrateManagerTest.php" line="57" assertions="0" time="0.069728"/>
+      <testcase name="testFoundationMethod" class="Orchestra\Publisher\TestCase\MigrateManagerTest" file="/Users/crynobone/Projects/orchestra/publisher/tests/MigrateManagerTest.php" line="96" assertions="0" time="0.021024"/>
+    </testsuite>
+  </testsuite>
+</testsuites>
