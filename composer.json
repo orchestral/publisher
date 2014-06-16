@@ -15,11 +15,11 @@
 	},
 	"require": {
 		"php": ">=5.3.3",
-		"illuminate/support": "4.2.*"
+		"illuminate/support": "4.3.*"
 	},
 	"require-dev": {
 		"mockery/mockery": "0.9.*",
-		"illuminate/container": "4.2.*"
+		"illuminate/container": "4.3.*"
 	},
 	"suggest": {
 		"laravel/framework": "Allow using orchestra/extension component outside of Orchestra Platform 2",
