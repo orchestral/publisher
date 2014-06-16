@@ -15,7 +15,7 @@
 	},
 	"require": {
 		"php": ">=5.3.3",
-		"orchestra/support": "2.1.*"
+		"illuminate/support": "4.1.*"
 	},
 	"require-dev": {
 		"mockery/mockery": "0.9.*",
