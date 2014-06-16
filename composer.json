@@ -15,11 +15,11 @@
 	},
 	"require": {
 		"php": ">=5.3.3",
-		"illuminate/support": "4.1.*"
+		"illuminate/support": "4.2.*"
 	},
 	"require-dev": {
 		"mockery/mockery": "0.9.*",
-		"illuminate/container": "4.1.*"
+		"illuminate/container": "4.2.*"
 	},
 	"suggest": {
 		"laravel/framework": "Allow using orchestra/extension component outside of Orchestra Platform 2",
@@ -27,7 +27,7 @@
 	},
 	"extra": {
 		"branch-alias": {
-			"dev-master": "2.1-dev"
+			"dev-master": "2.3-dev"
 		}
 	},
 	"minimum-stability": "dev"
