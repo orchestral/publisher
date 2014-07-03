@@ -52,9 +52,9 @@ class AssetManagerTest extends \PHPUnit_Framework_TestCase
     public function testExtensionMethod()
     {
         $app = $this->app;
-        $app['files'] = $files = m::mock('Filesystem');
-        $app['orchestra.extension'] = $extension = m::mock('Extension');
-        $app['orchestra.extension.finder'] = $finder = m::mock('Finder');
+        $app['files'] = $files = m::mock('\Illuminate\Filesystem\Filesystem');
+        $app['orchestra.extension'] = $extension = m::mock('\Orchestra\Extension\Environment');
+        $app['orchestra.extension.finder'] = $finder = m::mock('\Orchestra\Extension\Finder');
 
         $publisher = m::mock('\Illuminate\Foundation\AssetPublisher');
 
@@ -80,9 +80,9 @@ class AssetManagerTest extends \PHPUnit_Framework_TestCase
     public function testExtensionMethodThrowsException()
     {
         $app = $this->app;
-        $app['files'] = $files = m::mock('Filesystem');
-        $app['orchestra.extension'] = $extension = m::mock('Extension');
-        $app['orchestra.extension.finder'] = $finder = m::mock('Finder');
+        $app['files'] = $files = m::mock('\Illuminate\Filesystem\Filesystem');
+        $app['orchestra.extension'] = $extension = m::mock('\Orchestra\Extension\Environment');
+        $app['orchestra.extension.finder'] = $finder = m::mock('\Orchestra\Extension\Finder');
 
         $publisher = m::mock('\Illuminate\Foundation\AssetPublisher');
 
@@ -103,7 +103,7 @@ class AssetManagerTest extends \PHPUnit_Framework_TestCase
     public function testFoundationMethod()
     {
         $app = $this->app;
-        $app['files'] = $files = m::mock('Filesystem');
+        $app['files'] = $files = m::mock('\Illuminate\Filesystem\Filesystem');
         $app['path.base'] = '/foo/path/';
 
         $publisher = m::mock('\Illuminate\Foundation\AssetPublisher');
@@ -126,7 +126,7 @@ class AssetManagerTest extends \PHPUnit_Framework_TestCase
     public function testFoundationMethodWhenPublicDirectoryDoesNotExists()
     {
         $app = $this->app;
-        $app['files'] = $files = m::mock('Filesystem');
+        $app['files'] = $files = m::mock('\Illuminate\Filesystem\Filesystem');
         $app['path.base'] = '/foo/path/';
 
         $publisher = m::mock('\Illuminate\Foundation\AssetPublisher');
@@ -142,12 +142,12 @@ class AssetManagerTest extends \PHPUnit_Framework_TestCase
      * Test Orchestra\Publisher\AssetManager::foundation() method
      * throws an exception.
      *
-     * @expectedException Orchestra\Publisher\FilePermissionException
+     * @expectedException \Orchestra\Publisher\FilePermissionException
      */
     public function testFoundationMethodThrowsException()
     {
         $app = $this->app;
-        $app['files'] = $files = m::mock('Filesystem');
+        $app['files'] = $files = m::mock('\Illuminate\Filesystem\Filesystem');
         $app['path.base'] = '/foo/path/';
 
         $publisher = m::mock('\Illuminate\Foundation\AssetPublisher');
