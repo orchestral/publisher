@@ -19,7 +19,10 @@
 	},
 	"require-dev": {
 		"mockery/mockery": "0.9.*",
-		"illuminate/container": "4.2.*"
+		"illuminate/container": "4.2.*",
+		"illuminate/database": "4.2.*",
+		"illuminate/filesystem": "4.2.*",
+		"orchestra/extension": "2.2.*"
 	},
 	"suggest": {
 		"laravel/framework": "Allow using orchestra/extension component outside of Orchestra Platform 2",

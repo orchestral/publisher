@@ -38,7 +38,7 @@ class MigrateManagerTest extends \PHPUnit_Framework_TestCase
     public function testRunMethod()
     {
         $migrator   = m::mock('\Illuminate\Database\Migrations\Migrator');
-        $repository = m::mock('Repository');
+        $repository = m::mock('\Illuminate\Database\Migrations\DatabaseMigrationRepository');
 
         $migrator->shouldReceive('getRepository')->once()->andReturn($repository)
             ->shouldReceive('run')->once()->with('/foo/path/migrations')->andReturn(null);
@@ -59,11 +59,11 @@ class MigrateManagerTest extends \PHPUnit_Framework_TestCase
         $app = $this->app;
 
         $app['migrator'] = $migrator = m::mock('\Illuminate\Database\Migrations\Migrator');
-        $app['files'] = $files = m::mock('Filesystem');
-        $app['orchestra.extension'] = $extension = m::mock('Extension');
-        $app['orchestra.extension.finder'] = $finder = m::mock('Finder');
+        $app['files'] = $files = m::mock('\Illuminate\Filesystem\Filesystem');
+        $app['orchestra.extension'] = $extension = m::mock('\Orchestra\Extension\Factory');
+        $app['orchestra.extension.finder'] = $finder = m::mock('\Orchestra\Extension\Finder');
 
-        $repository = m::mock('Repository');
+        $repository = m::mock('\Illuminate\Database\Migrations\DatabaseMigrationRepository');
 
         $extension->shouldReceive('option')->once()->with('foo/bar', 'path')->andReturn('/foo/path/foo/bar/')
             ->shouldReceive('option')->once()->with('foo/bar', 'source-path')->andReturn('/foo/app/foo/bar/')
@@ -97,11 +97,14 @@ class MigrateManagerTest extends \PHPUnit_Framework_TestCase
     {
         $app = $this->app;
 
+        $app['files'] = $files = m::mock('\Illuminate\Filesystem\Filesystem');
         $app['migrator'] = $migrator = m::mock('\Illuminate\Database\Migrations\Migrator');
         $app['path.base'] = '/foo/path/';
 
-        $repository = m::mock('Repository');
+        $repository = m::mock('\Illuminate\Database\Migrations\DatabaseMigrationRepository');
 
+        $files->shouldReceive('isDirectory')->once()->with('/foo/path/vendor/orchestra/memory/src/migrations/')->andReturn(true)
+            ->shouldReceive('isDirectory')->once()->with('/foo/path/vendor/orchestra/auth/src/migrations/')->andReturn(true);
         $migrator->shouldReceive('getRepository')->twice()->andReturn($repository)
             ->shouldReceive('run')->once()->with('/foo/path/vendor/orchestra/memory/src/migrations/')->andReturn(null)
             ->shouldReceive('run')->once()->with('/foo/path/vendor/orchestra/auth/src/migrations/')->andReturn(null);

@@ -60,6 +60,23 @@ class MigrateManager implements PublisherInterface
     }
 
     /**
+     * Migrate package.
+     *
+     * @param  string   $name
+     * @return void
+     */
+    public function package($name)
+    {
+        $basePath   = rtrim($this->app['path.base'], '/');
+        $vendorPath = "{$basePath}/vendor";
+        $path       = "{$vendorPath}/{$name}/src/migrations/";
+
+        if ($this->app['files']->isDirectory($path)) {
+            $this->run($path);
+        }
+    }
+
+    /**
      * Migrate extension.
      *
      * @param  string   $name
@@ -100,9 +117,7 @@ class MigrateManager implements PublisherInterface
      */
     public function foundation()
     {
-        $basePath = rtrim($this->app['path.base'], '/');
-
-        $this->run("{$basePath}/vendor/orchestra/memory/src/migrations/");
-        $this->run("{$basePath}/vendor/orchestra/auth/src/migrations/");
+        $this->package("orchestra/memory");
+        $this->package("orchestra/auth");
     }
 }
