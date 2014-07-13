@@ -2,10 +2,12 @@
 	"name": "orchestra/publisher",
 	"description": "Orchestra Platform 2 Publisher Component",
 	"license": "MIT",
+	"keywords": ["laravel", "orchestral", "orchestral-platform", "migration", "asset-publishing"],
 	"authors": [
 		{
 			"name": "Mior Muhammad Zaki",
-			"email": "crynobone@gmail.com"
+			"email": "crynobone@gmail.com",
+			"homepage": "https://github.com/crynobone"
 		}
 	],
 	"autoload": {
