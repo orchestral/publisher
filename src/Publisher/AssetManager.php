@@ -2,7 +2,7 @@
 
 use Exception;
 use Illuminate\Container\Container;
-use Illuminate\Foundation\AssetPublisher;
+use Illuminate\Foundation\Publishing\AssetPublisher;
 
 class AssetManager implements PublisherInterface
 {
@@ -16,15 +16,15 @@ class AssetManager implements PublisherInterface
     /**
      * Migrator instance.
      *
-     * @var \Illuminate\Foundation\AssetPublisher
+     * @var \Illuminate\Foundation\Publishing\AssetPublisher
      */
     protected $publisher;
 
     /**
      * Construct a new instance.
      *
-     * @param  \Illuminate\Container\Container          $app
-     * @param  \Illuminate\Foundation\AssetPublisher    $publisher
+     * @param  \Illuminate\Container\Container                  $app
+     * @param  \Illuminate\Foundation\Publishing\AssetPublisher $publisher
      */
     public function __construct(Container $app, AssetPublisher $publisher)
     {
