@@ -17,14 +17,14 @@
 	},
 	"require": {
 		"php": ">=5.4.0",
-		"illuminate/support": "4.3.*"
+		"illuminate/support": "5.0.*"
 	},
 	"require-dev": {
 		"mockery/mockery": "0.9.*",
-		"illuminate/container": "4.3.*",
-		"illuminate/database": "4.3.*",
-		"illuminate/filesystem": "4.3.*",
-		"orchestra/extension": "2.3.*"
+		"illuminate/container": "5.0.*",
+		"illuminate/database": "5.0.*",
+		"illuminate/filesystem": "5.0.*",
+		"orchestra/extension": "3.0.*"
 	},
 	"suggest": {
 		"laravel/framework": "Allow using orchestra/extension component outside of Orchestra Platform 2",
@@ -32,7 +32,7 @@
 	},
 	"extra": {
 		"branch-alias": {
-			"dev-master": "2.3-dev"
+			"dev-master": "3.0-dev"
 		}
 	},
 	"minimum-stability": "dev"
