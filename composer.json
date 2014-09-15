@@ -1,6 +1,6 @@
 {
 	"name": "orchestra/publisher",
-	"description": "Orchestra Platform 2 Publisher Component",
+	"description": "Publisher Component for Orchestra Platform",
 	"license": "MIT",
 	"keywords": ["laravel", "orchestral", "orchestral-platform", "migration", "asset-publishing"],
 	"authors": [
@@ -27,8 +27,8 @@
 		"orchestra/extension": "3.0.*"
 	},
 	"suggest": {
-		"laravel/framework": "Allow using orchestra/extension component outside of Orchestra Platform 2",
-		"orchestra/foundation": "Allow using orchestra/extension with Orchestra Platform 2"
+		"laravel/framework": "Allow using orchestra/extension component outside of Orchestra Platform",
+		"orchestra/foundation": "Allow using orchestra/extension with Orchestra Platform"
 	},
 	"extra": {
 		"branch-alias": {
