@@ -1,7 +1,7 @@
 <?php namespace Orchestra\Publisher;
 
-use Illuminate\Foundation\Publishing\AssetPublisher;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Foundation\Publishing\AssetPublisher;
 
 class PublisherServiceProvider extends ServiceProvider
 {
