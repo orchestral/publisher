@@ -8,7 +8,7 @@ class PublisherServiceProvider extends ServiceProvider
     /**
      * Indicates if loading of the provider is deferred.
      *
-     * @var boolean
+     * @var bool
      */
     protected $defer = true;
 
@@ -20,6 +20,7 @@ class PublisherServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerMigration();
+
         $this->registerAssetPublisher();
     }
 
@@ -30,7 +31,7 @@ class PublisherServiceProvider extends ServiceProvider
      */
     protected function registerMigration()
     {
-        $this->app->bindShared('orchestra.publisher.migrate', function ($app) {
+        $this->app->singleton('orchestra.publisher.migrate', function ($app) {
             // In order to use migration, we need to boot 'migration.repository'
             // instance.
             $app['migration.repository'];
@@ -46,7 +47,7 @@ class PublisherServiceProvider extends ServiceProvider
      */
     protected function registerAssetPublisher()
     {
-        $this->app->bindShared('orchestra.publisher.asset', function ($app) {
+        $this->app->singleton('orchestra.publisher.asset', function ($app) {
             $publisher = new AssetPublisher($app['files'], $app['path.public']);
 
             return new AssetManager($app, $publisher);
@@ -60,9 +61,9 @@ class PublisherServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array(
+        return [
             'orchestra.publisher.migrate',
             'orchestra.publisher.asset',
-        );
+        ];
     }
 }

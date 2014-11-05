@@ -1,7 +1,7 @@
 <?php namespace Orchestra\Publisher;
 
 use Exception;
-use Illuminate\Container\Container;
+use Illuminate\Contracts\Container\Container;
 use Illuminate\Foundation\Publishing\AssetPublisher;
 
 class AssetManager implements PublisherInterface
@@ -9,7 +9,7 @@ class AssetManager implements PublisherInterface
     /**
      * Application instance.
      *
-     * @var \Illuminate\Container\Container
+     * @var \Illuminate\Contracts\Container\Container
      */
     protected $app;
 
@@ -23,8 +23,8 @@ class AssetManager implements PublisherInterface
     /**
      * Construct a new instance.
      *
-     * @param  \Illuminate\Container\Container                  $app
-     * @param  \Illuminate\Foundation\Publishing\AssetPublisher $publisher
+     * @param  \Illuminate\Contracts\Container\Container  $app
+     * @param  \Illuminate\Foundation\Publishing\AssetPublisher  $publisher
      */
     public function __construct(Container $app, AssetPublisher $publisher)
     {

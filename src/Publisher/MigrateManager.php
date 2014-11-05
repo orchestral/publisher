@@ -1,14 +1,14 @@
 <?php namespace Orchestra\Publisher;
 
-use Illuminate\Container\Container;
 use Illuminate\Database\Migrations\Migrator;
+use Illuminate\Contracts\Container\Container;
 
 class MigrateManager implements PublisherInterface
 {
     /**
      * Application instance.
      *
-     * @var \Illuminate\Container\Container
+     * @var \Illuminate\Contracts\Container\Container
      */
     protected $app;
 
@@ -22,8 +22,8 @@ class MigrateManager implements PublisherInterface
     /**
      * Construct a new instance.
      *
-     * @param  \Illuminate\Container\Container          $app
-     * @param  \Illuminate\Database\Migrations\Migrator $migrator
+     * @param  \Illuminate\Contracts\Container\Container  $app
+     * @param  \Illuminate\Database\Migrations\Migrator  $migrator
      */
     public function __construct(Container $app, Migrator $migrator)
     {
@@ -89,18 +89,18 @@ class MigrateManager implements PublisherInterface
         $basePath   = $finder->resolveExtensionPath(rtrim($extension->option($name, 'path'), '/'));
         $sourcePath = $finder->resolveExtensionPath(rtrim($extension->option($name, 'source-path'), '/'));
 
-        $paths = array(
+        $paths = [
             "{$basePath}/database/migrations/",
             "{$basePath}/src/migrations/",
-        );
+        ];
 
         // We don't execute the same migration twice, this little code
         // compare both folder before appending the paths.
         if ($basePath !== $sourcePath && ! empty($sourcePath)) {
-            $paths = array_merge($paths, array(
+            $paths = array_merge($paths, [
                 "{$sourcePath}/database/migrations/",
                 "{$sourcePath}/src/migrations/",
-            ));
+            ]);
         }
 
         foreach ($paths as $path) {
