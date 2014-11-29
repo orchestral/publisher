@@ -35,8 +35,8 @@ class AssetManager implements PublisherInterface
     /**
      * Run migration for an extension or application.
      *
-     * @param  string   $name
-     * @param  string   $destinationPath
+     * @param  string  $name
+     * @param  string  $destinationPath
      * @return mixed
      */
     public function publish($name, $destinationPath)
@@ -47,7 +47,7 @@ class AssetManager implements PublisherInterface
     /**
      * Migrate extension.
      *
-     * @param  string   $name
+     * @param  string  $name
      * @return mixed
      * @throws \Orchestra\Extension\FilePermissionException
      */

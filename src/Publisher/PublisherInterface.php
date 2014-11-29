@@ -5,7 +5,7 @@ interface PublisherInterface
     /**
      * Publish extension.
      *
-     * @param  string   $name
+     * @param  string  $name
      * @return void
      */
     public function extension($name);
