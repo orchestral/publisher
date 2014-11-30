@@ -3,6 +3,7 @@
 use Exception;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Foundation\Publishing\AssetPublisher;
+use Orchestra\Contracts\Publisher\FilePermissionException;
 
 class AssetManager implements PublisherInterface
 {
@@ -49,7 +50,7 @@ class AssetManager implements PublisherInterface
      *
      * @param  string  $name
      * @return mixed
-     * @throws \Orchestra\Extension\FilePermissionException
+     * @throws \Orchestra\Contracts\Publisher\FilePermissionException
      */
     public function extension($name)
     {
@@ -72,7 +73,7 @@ class AssetManager implements PublisherInterface
      * Migrate Orchestra Platform.
      *
      * @return mixed
-     * @throws \Orchestra\Extension\FilePermissionException
+     * @throws \Orchestra\Contracts\Publisher\FilePermissionException
      */
     public function foundation()
     {

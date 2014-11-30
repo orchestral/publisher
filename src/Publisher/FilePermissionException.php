@@ -1,8 +1,6 @@
 <?php namespace Orchestra\Publisher;
 
-use RuntimeException;
-
-class FilePermissionException extends RuntimeException
+class FilePermissionException extends \Orchestra\Contracts\Publisher\FilePermissionException
 {
     //
 }

@@ -75,7 +75,7 @@ class AssetManagerTest extends \PHPUnit_Framework_TestCase
      * Test Orchestra\Publisher\AssetManager::extension() method
      * throws exception.
      *
-     * @expectedException \Orchestra\Publisher\FilePermissionException
+     * @expectedException \Orchestra\Contracts\Publisher\FilePermissionException
      */
     public function testExtensionMethodThrowsException()
     {
@@ -142,7 +142,7 @@ class AssetManagerTest extends \PHPUnit_Framework_TestCase
      * Test Orchestra\Publisher\AssetManager::foundation() method
      * throws an exception.
      *
-     * @expectedException \Orchestra\Publisher\FilePermissionException
+     * @expectedException \Orchestra\Contracts\Publisher\FilePermissionException
      */
     public function testFoundationMethodThrowsException()
     {
