@@ -1,11 +1,12 @@
 Orchestra Platform Publisher Component
 ==============
 
-[![Latest Stable Version](https://poser.pugx.org/orchestra/publisher/v/stable.png)](https://packagist.org/packages/orchestra/publisher)
-[![Total Downloads](https://poser.pugx.org/orchestra/publisher/downloads.png)](https://packagist.org/packages/orchestra/publisher)
-[![Build Status](https://travis-ci.org/orchestral/publisher.svg?branch=master)](https://travis-ci.org/orchestral/publisher)
-[![Coverage Status](https://coveralls.io/repos/orchestral/publisher/badge.png?branch=master)](https://coveralls.io/r/orchestral/publisher?branch=master)
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/orchestral/publisher/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/orchestral/publisher/)
+[![Latest Stable Version](https://img.shields.io/github/release/orchestral/publisher.svg?style=flat)](https://packagist.org/packages/orchestra/publisher)
+[![Total Downloads](https://img.shields.io/packagist/dt/orchestra/publisher.svg?style=flat)](https://packagist.org/packages/orchestra/publisher)
+[![MIT License](https://img.shields.io/packagist/l/orchestra/publisher.svg?style=flat)](https://packagist.org/packages/orchestra/publisher)
+[![Build Status](https://img.shields.io/travis/orchestral/publisher/master.svg?style=flat)](https://travis-ci.org/orchestral/publisher)
+[![Coverage Status](https://img.shields.io/coveralls/orchestral/publisher/master.svg?style=flat)](https://coveralls.io/r/orchestral/publisher?branch=master)
+[![Scrutinizer Quality Score](https://img.shields.io/scrutinizer/g/orchestral/publisher/master.svg?style=flat)](https://scrutinizer-ci.com/g/orchestral/publisher/)
 
 ## Quick Installation
 
