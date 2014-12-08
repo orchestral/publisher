@@ -2,7 +2,7 @@
 
 use Exception;
 use Illuminate\Contracts\Container\Container;
-use Illuminate\Foundation\Publishing\AssetPublisher;
+use Orchestra\Publisher\Publishing\AssetPublisher;
 use Orchestra\Contracts\Publisher\FilePermissionException;
 
 class AssetManager implements PublisherInterface
