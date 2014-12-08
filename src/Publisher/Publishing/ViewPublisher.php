@@ -1,5 +1,7 @@
 <?php namespace Orchestra\Publisher\Publishing;
 
+use InvalidArgumentException;
+
 class ViewPublisher extends Publisher
 {
     /**
@@ -8,7 +10,6 @@ class ViewPublisher extends Publisher
      * @param  string  $package
      * @param  string  $packagePath
      * @return string
-     *
      * @throws \InvalidArgumentException
      */
     protected function getSource($package, $packagePath)
@@ -16,7 +17,7 @@ class ViewPublisher extends Publisher
         $source = $packagePath."/{$package}/src/views";
 
         if (! $this->files->isDirectory($source)) {
-            throw new \InvalidArgumentException("Views not found.");
+            throw new InvalidArgumentException("Views not found.");
         }
 
         return $source;

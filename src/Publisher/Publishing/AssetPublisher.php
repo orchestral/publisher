@@ -1,5 +1,7 @@
 <?php namespace Orchestra\Publisher\Publishing;
 
+use InvalidArgumentException;
+
 class AssetPublisher extends Publisher
 {
     /**
@@ -8,7 +10,6 @@ class AssetPublisher extends Publisher
      * @param  string  $package
      * @param  string  $packagePath
      * @return string
-     *
      * @throws \InvalidArgumentException
      */
     protected function getSource($package, $packagePath)
@@ -16,7 +17,7 @@ class AssetPublisher extends Publisher
         $source = $packagePath."/{$package}/public";
 
         if (! $this->files->isDirectory($source)) {
-            throw new \InvalidArgumentException("Assets not found.");
+            throw new InvalidArgumentException("Assets not found.");
         }
 
         return $source;
