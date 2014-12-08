@@ -48,9 +48,7 @@ class PublisherServiceProvider extends ServiceProvider
     protected function registerAssetPublisher()
     {
         $this->app->singleton('orchestra.publisher.asset', function ($app) {
-            $publisher = new AssetPublisher($app['files'], $app['path.public']);
-
-            return new AssetManager($app, $publisher);
+            return new AssetManager($app, $app['asset.publisher']);
         });
     }
 
