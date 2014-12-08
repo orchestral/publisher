@@ -37,7 +37,7 @@ class AssetManagerTest extends \PHPUnit_Framework_TestCase
      */
     public function testPublishMethod()
     {
-        $publisher = m::mock('\Illuminate\Foundation\Publishing\AssetPublisher');
+        $publisher = m::mock('\Orchestra\Publisher\Publishing\AssetPublisher');
         $publisher->shouldReceive('publish')->once()->with('foo', 'bar')->andReturn(true);
 
         $stub = new AssetManager($this->app, $publisher);
@@ -56,7 +56,7 @@ class AssetManagerTest extends \PHPUnit_Framework_TestCase
         $app['orchestra.extension'] = $extension = m::mock('\Orchestra\Extension\Factory');
         $app['orchestra.extension.finder'] = $finder = m::mock('\Orchestra\Extension\Finder');
 
-        $publisher = m::mock('\Illuminate\Foundation\Publishing\AssetPublisher');
+        $publisher = m::mock('\Orchestra\Publisher\Publishing\AssetPublisher');
 
         $files->shouldReceive('isDirectory')->once()->with('bar/public')->andReturn(true)
             ->shouldReceive('isDirectory')->once()->with('foobar/public')->andReturn(false);
@@ -84,7 +84,7 @@ class AssetManagerTest extends \PHPUnit_Framework_TestCase
         $app['orchestra.extension'] = $extension = m::mock('\Orchestra\Extension\Factory');
         $app['orchestra.extension.finder'] = $finder = m::mock('\Orchestra\Extension\Finder');
 
-        $publisher = m::mock('\Illuminate\Foundation\Publishing\AssetPublisher');
+        $publisher = m::mock('\Orchestra\Publisher\Publishing\AssetPublisher');
 
         $files->shouldReceive('isDirectory')->once()->with('bar/public')->andReturn(true);
         $extension->shouldReceive('option')->once()->with('foo', 'path')->andReturn('bar');
@@ -106,7 +106,7 @@ class AssetManagerTest extends \PHPUnit_Framework_TestCase
         $app['files'] = $files = m::mock('\Illuminate\Filesystem\Filesystem');
         $app['path.base'] = '/foo/path/';
 
-        $publisher = m::mock('\Illuminate\Foundation\Publishing\AssetPublisher');
+        $publisher = m::mock('\Orchestra\Publisher\Publishing\AssetPublisher');
 
         $files->shouldReceive('isDirectory')->once()
             ->with('/foo/path/vendor/orchestra/foundation/src/public')->andReturn(true);
@@ -129,7 +129,7 @@ class AssetManagerTest extends \PHPUnit_Framework_TestCase
         $app['files'] = $files = m::mock('\Illuminate\Filesystem\Filesystem');
         $app['path.base'] = '/foo/path/';
 
-        $publisher = m::mock('\Illuminate\Foundation\Publishing\AssetPublisher');
+        $publisher = m::mock('\Orchestra\Publisher\Publishing\AssetPublisher');
 
         $files->shouldReceive('isDirectory')->once()
             ->with('/foo/path/vendor/orchestra/foundation/src/public')->andReturn(false);
@@ -150,7 +150,7 @@ class AssetManagerTest extends \PHPUnit_Framework_TestCase
         $app['files'] = $files = m::mock('\Illuminate\Filesystem\Filesystem');
         $app['path.base'] = '/foo/path/';
 
-        $publisher = m::mock('\Illuminate\Foundation\Publishing\AssetPublisher');
+        $publisher = m::mock('\Orchestra\Publisher\Publishing\AssetPublisher');
 
         $files->shouldReceive('isDirectory')->once()
             ->with('/foo/path/vendor/orchestra/foundation/src/public')->andReturn(true);
