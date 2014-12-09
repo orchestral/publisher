@@ -3,8 +3,10 @@
 use Illuminate\Support\ServiceProvider;
 use Orchestra\Publisher\Publishing\ViewPublisher;
 use Orchestra\Publisher\Publishing\AssetPublisher;
+use Orchestra\Publisher\Publishing\ConfigPublisher;
 use Orchestra\Publisher\Console\ViewPublishCommand;
 use Orchestra\Publisher\Console\AssetPublishCommand;
+use Orchestra\Publisher\Console\ConfigPublishCommand;
 
 class CommandServiceProvider extends ServiceProvider
 {
@@ -24,10 +26,13 @@ class CommandServiceProvider extends ServiceProvider
     {
         $this->registerAssetPublisher();
 
+        $this->registerConfigPublisher();
+
         $this->registerViewPublisher();
 
         $this->commands([
             'command.asset.publish',
+            'command.config.publish',
             'command.view.publish',
         ]);
     }
@@ -64,6 +69,41 @@ class CommandServiceProvider extends ServiceProvider
     {
         $this->app->singleton('command.asset.publish', function ($app) {
             return new AssetPublishCommand($app['asset.publisher']);
+        });
+    }
+
+    /**
+     * Register the configuration publisher class and command.
+     *
+     * @return void
+     */
+    protected function registerConfigPublisher()
+    {
+        $this->registerConfigPublishCommand();
+
+        $this->app->singleton('config.publisher', function ($app) {
+            $path = $app['path.config'];
+
+            // Once we have created the configuration publisher, we will set the default
+            // package path on the object so that it knows where to find the packages
+            // that are installed for the application and can move them to the app.
+            $publisher = new ConfigPublisher($app['files'], $path);
+
+            $publisher->setPackagePath($app['path.base'].'/vendor');
+
+            return $publisher;
+        });
+    }
+
+    /**
+     * Register the configuration publish console command.
+     *
+     * @return void
+     */
+    protected function registerConfigPublishCommand()
+    {
+        $this->app->singleton('command.config.publish', function ($app) {
+            return new ConfigPublishCommand($app['config.publisher']);
         });
     }
 
