@@ -17,7 +17,7 @@ class AssetManager implements PublisherInterface
     /**
      * Migrator instance.
      *
-     * @var \Illuminate\Foundation\Publishing\AssetPublisher
+     * @var \Orchestra\Publisher\Publishing\AssetPublisher
      */
     protected $publisher;
 
@@ -25,7 +25,7 @@ class AssetManager implements PublisherInterface
      * Construct a new instance.
      *
      * @param  \Illuminate\Contracts\Container\Container  $app
-     * @param  \Illuminate\Foundation\Publishing\AssetPublisher  $publisher
+     * @param  \Orchestra\Publisher\Publishing\AssetPublisher  $publisher
      */
     public function __construct(Container $app, AssetPublisher $publisher)
     {
@@ -54,11 +54,7 @@ class AssetManager implements PublisherInterface
      */
     public function extension($name)
     {
-        $finder   = $this->app['orchestra.extension.finder'];
-        $basePath = rtrim($this->app['orchestra.extension']->option($name, 'path'), '/');
-        $path     = $finder->resolveExtensionPath("{$basePath}/public");
-
-        if (! $this->app['files']->isDirectory($path)) {
+        if (is_null($path = $this->getPathFromExtensionName($name))) {
             return false;
         }
 
@@ -88,5 +84,28 @@ class AssetManager implements PublisherInterface
         } catch (Exception $e) {
             throw new FilePermissionException("Unable to publish [{$path}].");
         }
+    }
+
+    /**
+     * Get path from extension name.
+     *
+     * @param  string  $name
+     * @return string|null
+     */
+    protected function getPathFromExtensionName($name)
+    {
+        $finder   = $this->app['orchestra.extension.finder'];
+        $basePath = rtrim($this->app['orchestra.extension']->option($name, 'path'), '/');
+        $basePath = $finder->resolveExtensionPath($basePath);
+
+        $paths = ["{$basePath}/public", "{$basePath}/resources/public"];
+
+        foreach ($paths as $path) {
+            if ($this->app['files']->isDirectory($path)) {
+                return $path;
+            }
+        }
+
+        return null;
     }
 }
