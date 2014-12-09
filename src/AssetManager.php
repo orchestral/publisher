@@ -98,7 +98,7 @@ class AssetManager implements PublisherInterface
         $basePath = rtrim($this->app['orchestra.extension']->option($name, 'path'), '/');
         $basePath = $finder->resolveExtensionPath($basePath);
 
-        $paths = ["{$basePath}/public", "{$basePath}/resources/public"];
+        $paths = ["{$basePath}/resources/public", "{$basePath}/public"];
 
         foreach ($paths as $path) {
             if ($this->app['files']->isDirectory($path)) {

@@ -15,8 +15,8 @@ class AssetPublisher extends Publisher
     protected function getSource($package, $packagePath)
     {
         $sources = [
-            "{$packagePath}/{$package}/public",
             "{$packagePath}/{$package}/resources/public",
+            "{$packagePath}/{$package}/public",
         ];
 
         foreach ($sources as $source) {

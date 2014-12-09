@@ -58,7 +58,8 @@ class AssetManagerTest extends \PHPUnit_Framework_TestCase
 
         $publisher = m::mock('\Orchestra\Publisher\Publishing\AssetPublisher');
 
-        $files->shouldReceive('isDirectory')->once()->with('bar/public')->andReturn(true)
+        $files->shouldReceive('isDirectory')->once()->with('bar/resources/public')->andReturn(false)
+            ->shouldReceive('isDirectory')->once()->with('bar/public')->andReturn(true)
             ->shouldReceive('isDirectory')->once()->with('foobar/public')->andReturn(false)
             ->shouldReceive('isDirectory')->once()->with('foobar/resources/public')->andReturn(false);
         $extension->shouldReceive('option')->once()->with('foo', 'path')->andReturn('bar')
@@ -87,7 +88,8 @@ class AssetManagerTest extends \PHPUnit_Framework_TestCase
 
         $publisher = m::mock('\Orchestra\Publisher\Publishing\AssetPublisher');
 
-        $files->shouldReceive('isDirectory')->once()->with('bar/public')->andReturn(true);
+        $files->shouldReceive('isDirectory')->once()->with('bar/resources/public')->andReturn(false)
+            ->shouldReceive('isDirectory')->once()->with('bar/public')->andReturn(true);
         $extension->shouldReceive('option')->once()->with('foo', 'path')->andReturn('bar');
         $finder->shouldReceive('resolveExtensionPath')->once()->with("bar")->andReturn('bar');
         $publisher->shouldReceive('publish')->once()->with('foo', 'bar/public')->andThrow('\Exception');
