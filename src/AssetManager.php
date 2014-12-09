@@ -77,7 +77,7 @@ class AssetManager implements PublisherInterface
      */
     public function foundation()
     {
-        $path = rtrim($this->app['path.base'], '/').'/vendor/orchestra/foundation/src/public';
+        $path = rtrim($this->app['path.base'], '/').'/vendor/orchestra/foundation/resources/public';
 
         if (! $this->app['files']->isDirectory($path)) {
             return false;

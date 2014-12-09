@@ -109,9 +109,9 @@ class AssetManagerTest extends \PHPUnit_Framework_TestCase
         $publisher = m::mock('\Orchestra\Publisher\Publishing\AssetPublisher');
 
         $files->shouldReceive('isDirectory')->once()
-            ->with('/foo/path/vendor/orchestra/foundation/src/public')->andReturn(true);
+            ->with('/foo/path/vendor/orchestra/foundation/resources/public')->andReturn(true);
         $publisher->shouldReceive('publish')->once()
-            ->with('orchestra/foundation', '/foo/path/vendor/orchestra/foundation/src/public')->andReturn(true);
+            ->with('orchestra/foundation', '/foo/path/vendor/orchestra/foundation/resources/public')->andReturn(true);
 
         $stub = new AssetManager($app, $publisher);
         $this->assertTrue($stub->foundation());
@@ -132,7 +132,7 @@ class AssetManagerTest extends \PHPUnit_Framework_TestCase
         $publisher = m::mock('\Orchestra\Publisher\Publishing\AssetPublisher');
 
         $files->shouldReceive('isDirectory')->once()
-            ->with('/foo/path/vendor/orchestra/foundation/src/public')->andReturn(false);
+            ->with('/foo/path/vendor/orchestra/foundation/resources/public')->andReturn(false);
 
         $stub = new AssetManager($app, $publisher);
         $this->assertFalse($stub->foundation());
@@ -153,9 +153,9 @@ class AssetManagerTest extends \PHPUnit_Framework_TestCase
         $publisher = m::mock('\Orchestra\Publisher\Publishing\AssetPublisher');
 
         $files->shouldReceive('isDirectory')->once()
-            ->with('/foo/path/vendor/orchestra/foundation/src/public')->andReturn(true);
+            ->with('/foo/path/vendor/orchestra/foundation/resources/public')->andReturn(true);
         $publisher->shouldReceive('publish')->once()
-            ->with('orchestra/foundation', '/foo/path/vendor/orchestra/foundation/src/public')->andThrow('Exception');
+            ->with('orchestra/foundation', '/foo/path/vendor/orchestra/foundation/resources/public')->andThrow('Exception');
 
         $stub = new AssetManager($app, $publisher);
         $stub->foundation();
