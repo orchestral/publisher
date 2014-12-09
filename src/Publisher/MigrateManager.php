@@ -90,7 +90,8 @@ class MigrateManager implements PublisherInterface
         $sourcePath = $finder->resolveExtensionPath(rtrim($extension->option($name, 'source-path'), '/'));
 
         $paths = [
-            "{$basePath}/database/migrations/",
+            "{$basePath}/resources/database/migrations/",
+            "{$basePath}/resources/migrations/",
             "{$basePath}/src/migrations/",
         ];
 
@@ -98,7 +99,8 @@ class MigrateManager implements PublisherInterface
         // compare both folder before appending the paths.
         if ($basePath !== $sourcePath && ! empty($sourcePath)) {
             $paths = array_merge($paths, [
-                "{$sourcePath}/database/migrations/",
+                "{$sourcePath}/resources/database/migrations/",
+                "{$sourcePath}/resources/migrations/",
                 "{$sourcePath}/src/migrations/",
             ]);
         }
