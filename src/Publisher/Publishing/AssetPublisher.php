@@ -14,12 +14,17 @@ class AssetPublisher extends Publisher
      */
     protected function getSource($package, $packagePath)
     {
-        $source = $packagePath."/{$package}/public";
+        $sources = [
+            "{$packagePath}/{$package}/public",
+            "{$packagePath}/{$package}/resources/public",
+        ];
 
-        if (! $this->files->isDirectory($source)) {
-            throw new InvalidArgumentException("Assets not found.");
+        foreach ($sources as $source) {
+            if ($this->files->isDirectory($source)) {
+                return $source;
+            }
         }
 
-        return $source;
+        throw new InvalidArgumentException("Assets not found.");
     }
 }

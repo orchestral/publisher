@@ -14,12 +14,17 @@ class ViewPublisher extends Publisher
      */
     protected function getSource($package, $packagePath)
     {
-        $source = $packagePath."/{$package}/src/views";
+        $sources = [
+            "{$packagePath}/{$package}/resources/views",
+            "{$packagePath}/{$package}/src/views",
+        ];
 
-        if (! $this->files->isDirectory($source)) {
-            throw new InvalidArgumentException("Views not found.");
+        foreach ($sources as $source) {
+            if ($this->files->isDirectory($source)) {
+                return $source;
+            }
         }
 
-        return $source;
+        throw new InvalidArgumentException("Views not found.");
     }
 }
