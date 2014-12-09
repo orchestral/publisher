@@ -49,9 +49,9 @@ class AssetPublishCommand extends Command
      */
     public function fire()
     {
-        foreach ($this->getPackages() as $package) {
-            $this->publishAssets($package);
-        }
+        $package = $this->input->getArgument('package');
+
+        $this->publishAssets($package);
     }
 
     /**
@@ -69,39 +69,6 @@ class AssetPublishCommand extends Command
         }
 
         $this->output->writeln('<info>Assets published for package:</info> '.$package);
-    }
-
-    /**
-     * Get the name of the package being published.
-     *
-     * @return array
-     */
-    protected function getPackages()
-    {
-        if (! is_null($package = $this->input->getArgument('package'))) {
-            return [$package];
-        }
-
-        return $this->findAllAssetPackages();
-    }
-
-    /**
-     * Find all the asset hosting packages in the system.
-     *
-     * @return array
-     */
-    protected function findAllAssetPackages()
-    {
-        $vendor = $this->laravel['path.base'].'/vendor';
-        $paths = Finder::create()->directories()->in($vendor)->name('public')->depth('< 3');
-
-        $packages = [];
-
-        foreach ($paths as $package) {
-            $packages[] = $package->getRelativePath();
-        }
-
-        return $packages;
     }
 
     /**
@@ -129,7 +96,7 @@ class AssetPublishCommand extends Command
     protected function getArguments()
     {
         return [
-            ['package', InputArgument::OPTIONAL, 'The name of package being published.'],
+            ['package', InputArgument::REQUIRED, 'The name of package being published.'],
         ];
     }
 
