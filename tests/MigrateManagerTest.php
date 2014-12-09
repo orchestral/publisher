@@ -72,14 +72,17 @@ class MigrateManagerTest extends \PHPUnit_Framework_TestCase
         $finder->shouldReceive('resolveExtensionPath')->once()->with('/foo/path/foo/bar')->andReturn('/foo/path/foo/bar')
             ->shouldReceive('resolveExtensionPath')->once()->with('/foo/app/foo/bar')->andReturn('/foo/app/foo/bar')
             ->shouldReceive('resolveExtensionPath')->twice()->with('/foo/path/laravel/framework')->andReturn('/foo/path/laravel/framework');
-        $files->shouldReceive('isDirectory')->once()->with('/foo/path/foo/bar/database/migrations/')->andReturn(true)
+        $files->shouldReceive('isDirectory')->once()->with('/foo/path/foo/bar/resources/database/migrations/')->andReturn(true)
+            ->shouldReceive('isDirectory')->once()->with('/foo/path/foo/bar/resources/migrations/')->andReturn(false)
             ->shouldReceive('isDirectory')->once()->with('/foo/path/foo/bar/src/migrations/')->andReturn(false)
-            ->shouldReceive('isDirectory')->once()->with('/foo/app/foo/bar/database/migrations/')->andReturn(false)
+            ->shouldReceive('isDirectory')->once()->with('/foo/app/foo/bar/resources/database/migrations/')->andReturn(false)
+            ->shouldReceive('isDirectory')->once()->with('/foo/app/foo/bar/resources/migrations/')->andReturn(false)
             ->shouldReceive('isDirectory')->once()->with('/foo/app/foo/bar/src/migrations/')->andReturn(false)
-            ->shouldReceive('isDirectory')->once()->with('/foo/path/laravel/framework/database/migrations/')->andReturn(false)
+            ->shouldReceive('isDirectory')->once()->with('/foo/path/laravel/framework/resources/database/migrations/')->andReturn(false)
+            ->shouldReceive('isDirectory')->once()->with('/foo/path/laravel/framework/resources/migrations/')->andReturn(false)
             ->shouldReceive('isDirectory')->once()->with('/foo/path/laravel/framework/src/migrations/')->andReturn(false);
         $migrator->shouldReceive('getRepository')->once()->andReturn($repository)
-            ->shouldReceive('run')->once()->with('/foo/path/foo/bar/database/migrations/')->andReturn(null);
+            ->shouldReceive('run')->once()->with('/foo/path/foo/bar/resources/database/migrations/')->andReturn(null);
         $repository->shouldReceive('repositoryExists')->once()->andReturn(true)
             ->shouldReceive('createRepository')->never()->andReturn(null);
 
