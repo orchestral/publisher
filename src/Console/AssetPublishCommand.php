@@ -4,9 +4,12 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Orchestra\Publisher\Publishing\AssetPublisher;
+use Orchestra\Publisher\Console\Traits\PublishingPathTrait;
 
 class AssetPublishCommand extends Command
 {
+    use PublishingPathTrait;
+
     /**
      * The console command name.
      *
@@ -67,25 +70,6 @@ class AssetPublishCommand extends Command
         }
 
         $this->output->writeln('<info>Assets published for package:</info> '.$package);
-    }
-
-    /**
-     * Get the specified path to the files.
-     *
-     * @return string
-     */
-    protected function getPath()
-    {
-        $path = $this->input->getOption('path');
-
-        // First we will check for an explicitly specified path from the user. If one
-        // exists we will use that as the path to the assets. This allows the free
-        // storage of assets wherever is best for this developer's web projects.
-        if (is_null($path)) {
-            return;
-        }
-
-        return $this->laravel['path.base'].'/'.$path;
     }
 
     /**

@@ -4,9 +4,12 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Orchestra\Publisher\Publishing\ViewPublisher;
 use Symfony\Component\Console\Input\InputArgument;
+use Orchestra\Publisher\Console\Traits\PublishingPathTrait;
 
 class ViewPublishCommand extends Command
 {
+    use PublishingPathTrait;
+
     /**
      * The console command name.
      *
@@ -56,22 +59,6 @@ class ViewPublishCommand extends Command
         }
 
         $this->output->writeln('<info>Views published for package:</info> '.$package);
-    }
-
-    /**
-     * Get the specified path to the files.
-     *
-     * @return string
-     */
-    protected function getPath()
-    {
-        $path = $this->input->getOption('path');
-
-        if (is_null($path)) {
-            return;
-        }
-
-        return $this->laravel['path.base'].'/'.$path;
     }
 
     /**
