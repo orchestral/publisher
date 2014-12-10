@@ -1,7 +1,6 @@
 <?php namespace Orchestra\Publisher\Console;
 
 use Illuminate\Console\Command;
-use Symfony\Component\Finder\Finder;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Orchestra\Publisher\Publishing\AssetPublisher;
@@ -33,7 +32,6 @@ class AssetPublishCommand extends Command
      * Create a new asset publish command instance.
      *
      * @param  \Orchestra\Publisher\Publishing\AssetPublisher  $assets
-     * @return void
      */
     public function __construct(AssetPublisher $assets)
     {
@@ -83,9 +81,11 @@ class AssetPublishCommand extends Command
         // First we will check for an explicitly specified path from the user. If one
         // exists we will use that as the path to the assets. This allows the free
         // storage of assets wherever is best for this developer's web projects.
-        if (! is_null($path)) {
-            return $this->laravel['path.base'].'/'.$path;
+        if (is_null($path)) {
+            return;
         }
+
+        return $this->laravel['path.base'].'/'.$path;
     }
 
     /**

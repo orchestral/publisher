@@ -24,15 +24,14 @@ class ViewPublishCommand extends Command
     /**
      * The view publisher instance.
      *
-     * @var \Illuminate\Foundation\Publishing\ViewPublisher
+     * @var \Orchestra\Publisher\Publishing\ViewPublisher
      */
     protected $view;
 
     /**
      * Create a new view publish command instance.
      *
-     * @param  \Illuminate\Foundation\Publishing\ViewPublisher  $view
-     * @return void
+     * @param  \Orchestra\Publisher\Publishing\ViewPublisher  $view
      */
     public function __construct(ViewPublisher $view)
     {
@@ -68,9 +67,11 @@ class ViewPublishCommand extends Command
     {
         $path = $this->input->getOption('path');
 
-        if (! is_null($path)) {
-            return $this->laravel['path.base'].'/'.$path;
+        if (is_null($path)) {
+            return;
         }
+
+        return $this->laravel['path.base'].'/'.$path;
     }
 
     /**

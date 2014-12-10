@@ -27,15 +27,14 @@ class ConfigPublishCommand extends Command
     /**
      * The config publisher instance.
      *
-     * @var \Illuminate\Foundation\Publishing\ConfigPublisher
+     * @var \Orchestra\Publisher\Publishing\ConfigPublisher
      */
     protected $config;
 
     /**
      * Create a new configuration publish command instance.
      *
-     * @param  \Illuminate\Foundation\Publishing\ConfigPublisher  $config
-     * @return void
+     * @param  \Orchestra\Publisher\Publishing\ConfigPublisher  $config
      */
     public function __construct(ConfigPublisher $config)
     {
@@ -79,9 +78,11 @@ class ConfigPublishCommand extends Command
     {
         $path = $this->input->getOption('path');
 
-        if (! is_null($path)) {
-            return $this->laravel['path.base'].'/'.$path;
+        if (is_null($path)) {
+            return;
         }
+
+        return $this->laravel['path.base'].'/'.$path;
     }
 
     /**
