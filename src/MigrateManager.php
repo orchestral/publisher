@@ -69,10 +69,17 @@ class MigrateManager implements PublisherInterface
     {
         $basePath   = rtrim($this->app['path.base'], '/');
         $vendorPath = "{$basePath}/vendor";
-        $path       = "{$vendorPath}/{$name}/src/migrations/";
 
-        if ($this->app['files']->isDirectory($path)) {
-            $this->run($path);
+        $paths = [
+            "{$vendorPath}/{$name}/resources/database/migrations/",
+            "{$vendorPath}/{$name}/resources/migrations/",
+            "{$vendorPath}/{$name}/src/migrations/",
+        ];
+
+        foreach ($paths as $path) {
+            if ($this->app['files']->isDirectory($path)) {
+                $this->run($path);
+            }
         }
     }
 

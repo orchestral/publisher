@@ -106,11 +106,15 @@ class MigrateManagerTest extends \PHPUnit_Framework_TestCase
 
         $repository = m::mock('\Illuminate\Database\Migrations\DatabaseMigrationRepository');
 
-        $files->shouldReceive('isDirectory')->once()->with('/foo/path/vendor/orchestra/memory/src/migrations/')->andReturn(true)
-            ->shouldReceive('isDirectory')->once()->with('/foo/path/vendor/orchestra/auth/src/migrations/')->andReturn(true);
+        $files->shouldReceive('isDirectory')->once()->with('/foo/path/vendor/orchestra/memory/resources/database/migrations/')->andReturn(true)
+            ->shouldReceive('isDirectory')->once()->with('/foo/path/vendor/orchestra/memory/resources/migrations/')->andReturn(false)
+            ->shouldReceive('isDirectory')->once()->with('/foo/path/vendor/orchestra/memory/src/migrations/')->andReturn(false)
+            ->shouldReceive('isDirectory')->once()->with('/foo/path/vendor/orchestra/auth/resources/database/migrations/')->andReturn(true)
+            ->shouldReceive('isDirectory')->once()->with('/foo/path/vendor/orchestra/auth/resources/migrations/')->andReturn(false)
+            ->shouldReceive('isDirectory')->once()->with('/foo/path/vendor/orchestra/auth/src/migrations/')->andReturn(false);
         $migrator->shouldReceive('getRepository')->twice()->andReturn($repository)
-            ->shouldReceive('run')->once()->with('/foo/path/vendor/orchestra/memory/src/migrations/')->andReturn(null)
-            ->shouldReceive('run')->once()->with('/foo/path/vendor/orchestra/auth/src/migrations/')->andReturn(null);
+            ->shouldReceive('run')->once()->with('/foo/path/vendor/orchestra/memory/resources/database/migrations/')->andReturn(null)
+            ->shouldReceive('run')->once()->with('/foo/path/vendor/orchestra/auth/resources/database/migrations/')->andReturn(null);
         $repository->shouldReceive('repositoryExists')->twice()->andReturn(true)
             ->shouldReceive('createRepository')->never()->andReturn(null);
 
