@@ -72,8 +72,8 @@ class MigrateManager implements PublisherInterface
 
         $paths = [
             "{$vendorPath}/{$name}/resources/database/migrations/",
-            "{$vendorPath}/{$name}/resources/migrations/",
-            "{$vendorPath}/{$name}/src/migrations/",
+            "{$vendorPath}/{$name}/database/migrations/",
+            "{$vendorPath}/{$name}/migrations/",
         ];
 
         foreach ($paths as $path) {

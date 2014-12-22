@@ -16,7 +16,7 @@ class ViewPublisher extends Publisher
     {
         $sources = [
             "{$packagePath}/{$package}/resources/views",
-            "{$packagePath}/{$package}/src/views",
+            "{$packagePath}/{$package}/views",
         ];
 
         foreach ($sources as $source) {

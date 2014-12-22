@@ -22,9 +22,9 @@ class ConfigPublisherTest extends \PHPUnit_Framework_TestCase
 
         $pub = new ConfigPublisher($files2 = m::mock('\Illuminate\Filesystem\Filesystem'), __DIR__);
         $files2->shouldReceive('isDirectory')->once()->with(__DIR__.'/custom-packages/foo/bar/resources/config')->andReturn(false)
-            ->shouldReceive('isDirectory')->once()->with(__DIR__.'/custom-packages/foo/bar/src/config')->andReturn(true);
+            ->shouldReceive('isDirectory')->once()->with(__DIR__.'/custom-packages/foo/bar/config')->andReturn(true);
         $files2->shouldReceive('isDirectory')->once()->with(__DIR__.'/packages/foo/bar')->andReturn(true);
-        $files2->shouldReceive('copyDirectory')->once()->with(__DIR__.'/custom-packages/foo/bar/src/config', __DIR__.'/packages/foo/bar')->andReturn(true);
+        $files2->shouldReceive('copyDirectory')->once()->with(__DIR__.'/custom-packages/foo/bar/config', __DIR__.'/packages/foo/bar')->andReturn(true);
 
         $this->assertTrue($pub->publishPackage('foo/bar', __DIR__.'/custom-packages'));
     }

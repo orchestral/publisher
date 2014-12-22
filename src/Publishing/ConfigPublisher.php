@@ -16,7 +16,7 @@ class ConfigPublisher extends Publisher
     {
         $sources = [
             "{$packagePath}/{$package}/resources/config",
-            "{$packagePath}/{$package}/src/config",
+            "{$packagePath}/{$package}/config",
         ];
 
         foreach ($sources as $source) {

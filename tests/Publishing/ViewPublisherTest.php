@@ -22,11 +22,10 @@ class ViewPublisherTest extends \PHPUnit_Framework_TestCase
 
         $pub = new ViewPublisher($files2 = m::mock('\Illuminate\Filesystem\Filesystem'), __DIR__);
         $files2->shouldReceive('isDirectory')->once()->with(__DIR__.'/custom-packages/foo/bar/resources/views')->andReturn(false)
-            ->shouldReceive('isDirectory')->once()->with(__DIR__.'/custom-packages/foo/bar/src/views')->andReturn(true);
+            ->shouldReceive('isDirectory')->once()->with(__DIR__.'/custom-packages/foo/bar/views')->andReturn(true);
         $files2->shouldReceive('isDirectory')->once()->with(__DIR__.'/packages/foo/bar')->andReturn(true);
-        $files2->shouldReceive('copyDirectory')->once()->with(__DIR__.'/custom-packages/foo/bar/src/views', __DIR__.'/packages/foo/bar')->andReturn(true);
+        $files2->shouldReceive('copyDirectory')->once()->with(__DIR__.'/custom-packages/foo/bar/views', __DIR__.'/packages/foo/bar')->andReturn(true);
 
         $this->assertTrue($pub->publishPackage('foo/bar', __DIR__.'/custom-packages'));
     }
-
 }
