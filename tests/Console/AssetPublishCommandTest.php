@@ -15,8 +15,13 @@ class AssetPublishCommandTest extends \PHPUnit_Framework_TestCase
 
     public function testCommandCallsPublisherWithProperPackageName()
     {
+        $laravel = m::mock('\Illuminate\Contracts\Foundation\Application');
+        $laravel->shouldReceive('call')->once()->andReturnUsing(function ($method, $parameters = []) {
+            return call_user_func_array($method, $parameters);
+        });
+
         $command = new AssetPublishCommand($pub = m::mock('\Orchestra\Publisher\Publishing\AssetPublisher'));
-        $command->setLaravel(new Container);
+        $command->setLaravel($laravel);
         $pub->shouldReceive('alreadyPublished')->andReturn(false);
         $pub->shouldReceive('publishPackage')->once()->with('foo');
         $command->run(new ArrayInput(array('package' => 'foo')), new NullOutput);
