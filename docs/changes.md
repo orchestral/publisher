@@ -3,6 +3,18 @@ title: Publisher Change Log
 
 ---
 
+## Version 3.0 {#v3-0}
+
+### v3.0.0 {#v3-0-0}
+
+* Update support to Laravel Framework v5.0.
+* Simplify PSR-4 path.
+* Add `Orchestra\Publisher\Publishing\AssetPublisher`.
+* Add `Orchestra\Publisher\Publishing\ConfigPublisher`.
+* Add `Orchestra\Publisher\Publishing\ViewPublisher`.
+* Add `php artisan publish:asset`, `php artisan publish:config` and `php artisan publish:view` command.
+* Allow public directory to be either `./public` or `./resources/public` from the package base directory.
+
 ## Version 2.2 {#v2-2}
 
 ### v2.2.1 {#v2-2-1}
