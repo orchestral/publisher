@@ -106,6 +106,6 @@ class AssetManager implements PublisherInterface
             }
         }
 
-        return null;
+        return;
     }
 }
