@@ -33,7 +33,7 @@ abstract class Publisher
      */
     public function __construct(Filesystem $files, $publishPath)
     {
-        $this->files = $files;
+        $this->files       = $files;
         $this->publishPath = $publishPath;
     }
 
@@ -42,6 +42,7 @@ abstract class Publisher
      *
      * @param  string  $package
      * @param  string  $packagePath
+     *
      * @return string
      *
      * @throws \InvalidArgumentException
@@ -53,6 +54,7 @@ abstract class Publisher
      *
      * @param  string  $package
      * @param  string  $source
+     *
      * @return bool
      */
     public function publish($package, $source)
@@ -69,6 +71,7 @@ abstract class Publisher
      *
      * @param  string  $package
      * @param  string  $packagePath
+     *
      * @return bool
      */
     public function publishPackage($package, $packagePath = null)
@@ -82,6 +85,7 @@ abstract class Publisher
      * Create the destination directory if it doesn't exist.
      *
      * @param  string  $destination
+     *
      * @return void
      */
     protected function makeDestination($destination)
@@ -95,6 +99,7 @@ abstract class Publisher
      * Determine if a given package has already been published.
      *
      * @param  string  $package
+     *
      * @return bool
      */
     public function alreadyPublished($package)
@@ -106,6 +111,7 @@ abstract class Publisher
      * Get the target destination path for the files.
      *
      * @param  string  $package
+     *
      * @return string
      */
     public function getDestinationPath($package)
@@ -117,6 +123,7 @@ abstract class Publisher
      * Set the default package path.
      *
      * @param  string  $packagePath
+     *
      * @return void
      */
     public function setPackagePath($packagePath)

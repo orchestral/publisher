@@ -59,6 +59,7 @@ class AssetPublishCommand extends Command
      * Publish the assets for a given package name.
      *
      * @param  string  $package
+     *
      * @return void
      */
     protected function publishAssets($package)

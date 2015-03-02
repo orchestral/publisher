@@ -9,7 +9,9 @@ class ConfigPublisher extends Publisher
      *
      * @param  string  $package
      * @param  string  $packagePath
+     *
      * @return string
+     *
      * @throws \InvalidArgumentException
      */
     protected function getSource($package, $packagePath)

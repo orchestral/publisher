@@ -49,6 +49,7 @@ class MigrateManager implements PublisherInterface
      * Run migration for an extension or application.
      *
      * @param  string  $path
+     *
      * @return void
      */
     public function run($path)
@@ -63,6 +64,7 @@ class MigrateManager implements PublisherInterface
      * Migrate package.
      *
      * @param  string  $name
+     *
      * @return void
      */
     public function package($name)
@@ -87,6 +89,7 @@ class MigrateManager implements PublisherInterface
      * Migrate extension.
      *
      * @param  string  $name
+     *
      * @return void
      */
     public function extension($name)
