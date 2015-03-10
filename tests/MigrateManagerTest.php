@@ -18,7 +18,7 @@ class MigrateManagerTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->app = new Container;
+        $this->app = new Container();
     }
 
     /**
@@ -58,9 +58,9 @@ class MigrateManagerTest extends \PHPUnit_Framework_TestCase
     {
         $app = $this->app;
 
-        $app['migrator'] = $migrator = m::mock('\Illuminate\Database\Migrations\Migrator');
-        $app['files'] = $files = m::mock('\Illuminate\Filesystem\Filesystem');
-        $app['orchestra.extension'] = $extension = m::mock('\Orchestra\Extension\Factory');
+        $app['migrator']                   = $migrator                   = m::mock('\Illuminate\Database\Migrations\Migrator');
+        $app['files']                      = $files                      = m::mock('\Illuminate\Filesystem\Filesystem');
+        $app['orchestra.extension']        = $extension        = m::mock('\Orchestra\Extension\Factory');
         $app['orchestra.extension.finder'] = $finder = m::mock('\Orchestra\Extension\Finder');
 
         $repository = m::mock('\Illuminate\Database\Migrations\DatabaseMigrationRepository');
@@ -100,8 +100,8 @@ class MigrateManagerTest extends \PHPUnit_Framework_TestCase
     {
         $app = $this->app;
 
-        $app['files'] = $files = m::mock('\Illuminate\Filesystem\Filesystem');
-        $app['migrator'] = $migrator = m::mock('\Illuminate\Database\Migrations\Migrator');
+        $app['files']     = $files     = m::mock('\Illuminate\Filesystem\Filesystem');
+        $app['migrator']  = $migrator  = m::mock('\Illuminate\Database\Migrations\Migrator');
         $app['path.base'] = '/foo/path/';
 
         $repository = m::mock('\Illuminate\Database\Migrations\DatabaseMigrationRepository');

@@ -1,7 +1,6 @@
 <?php namespace Orchestra\Publisher\Console\TestCase;
 
 use Mockery as m;
-use Illuminate\Container\Container;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
 use Orchestra\Publisher\Console\ViewPublishCommand;
@@ -23,7 +22,6 @@ class ViewPublishCommandTest extends \PHPUnit_Framework_TestCase
         $command = new ViewPublishCommand($pub = m::mock('\Orchestra\Publisher\Publishing\ViewPublisher'));
         $command->setLaravel($laravel);
         $pub->shouldReceive('publishPackage')->once()->with('foo');
-        $command->run(new ArrayInput(array('package' => 'foo')), new NullOutput);
+        $command->run(new ArrayInput(['package' => 'foo']), new NullOutput());
     }
-
 }

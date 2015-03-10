@@ -22,7 +22,6 @@ class AssetPublisherTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($pub->publish('bar', 'foo'));
     }
 
-
     public function testPackageAssetPublishing()
     {
         $pub = new AssetPublisher($files = m::mock('Illuminate\Filesystem\Filesystem'), __DIR__);
