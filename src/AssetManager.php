@@ -38,6 +38,7 @@ class AssetManager implements PublisherInterface
      *
      * @param  string  $name
      * @param  string  $destinationPath
+     *
      * @return mixed
      */
     public function publish($name, $destinationPath)
@@ -49,7 +50,9 @@ class AssetManager implements PublisherInterface
      * Migrate extension.
      *
      * @param  string  $name
+     *
      * @return mixed
+     *
      * @throws \Orchestra\Contracts\Publisher\FilePermissionException
      */
     public function extension($name)
@@ -69,6 +72,7 @@ class AssetManager implements PublisherInterface
      * Migrate Orchestra Platform.
      *
      * @return mixed
+     *
      * @throws \Orchestra\Contracts\Publisher\FilePermissionException
      */
     public function foundation()
@@ -90,6 +94,7 @@ class AssetManager implements PublisherInterface
      * Get path from extension name.
      *
      * @param  string  $name
+     *
      * @return string|null
      */
     protected function getPathFromExtensionName($name)
@@ -106,6 +111,6 @@ class AssetManager implements PublisherInterface
             }
         }
 
-        return null;
+        return;
     }
 }
