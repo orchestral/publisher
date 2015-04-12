@@ -129,7 +129,7 @@ class MigrateManager implements PublisherInterface
      */
     public function foundation()
     {
-        $this->package("orchestra/memory");
-        $this->package("orchestra/auth");
+        $this->package('orchestra/memory');
+        $this->package('orchestra/auth');
     }
 }
