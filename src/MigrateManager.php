@@ -1,9 +1,10 @@
 <?php namespace Orchestra\Publisher;
 
+use Orchestra\Contracts\Publisher\Publisher;
 use Illuminate\Database\Migrations\Migrator;
 use Illuminate\Contracts\Container\Container;
 
-class MigrateManager implements PublisherInterface
+class MigrateManager implements Publisher
 {
     /**
      * Application instance.

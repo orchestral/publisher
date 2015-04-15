@@ -1,11 +1,12 @@
 <?php namespace Orchestra\Publisher;
 
 use Exception;
+use Orchestra\Contracts\Publisher\Publisher;
 use Illuminate\Contracts\Container\Container;
 use Orchestra\Publisher\Publishing\AssetPublisher;
 use Orchestra\Contracts\Publisher\FilePermissionException;
 
-class AssetManager implements PublisherInterface
+class AssetManager implements Publisher
 {
     /**
      * Application instance.
