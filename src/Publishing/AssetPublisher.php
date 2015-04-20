@@ -27,6 +27,6 @@ class AssetPublisher extends Publisher
             }
         }
 
-        throw new InvalidArgumentException("Assets not found.");
+        throw new InvalidArgumentException('Assets not found.');
     }
 }

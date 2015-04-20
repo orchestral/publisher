@@ -27,6 +27,6 @@ class ConfigPublisher extends Publisher
             }
         }
 
-        throw new InvalidArgumentException("Configuration not found.");
+        throw new InvalidArgumentException('Configuration not found.');
     }
 }

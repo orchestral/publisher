@@ -27,6 +27,6 @@ class ViewPublisher extends Publisher
             }
         }
 
-        throw new InvalidArgumentException("Views not found.");
+        throw new InvalidArgumentException('Views not found.');
     }
 }
