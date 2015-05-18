@@ -1,8 +1,8 @@
 {
 	"name": "orchestra/publisher",
 	"description": "Publisher Component for Orchestra Platform",
-	"license": "MIT",
 	"keywords": ["laravel", "orchestral", "orchestral-platform", "migration", "asset-publishing"],
+	"license": "MIT",
 	"authors": [
 		{
 			"name": "Mior Muhammad Zaki",
@@ -28,12 +28,12 @@
 		"orchestra/extension": "3.1.*"
 	},
 	"suggest": {
-		"laravel/framework": "Allow using orchestra/extension component outside of Orchestra Platform",
-		"orchestra/foundation": "Allow using orchestra/extension with Orchestra Platform"
+		"laravel/framework": "Allow using orchestra/extension component outside of Orchestra Platform (~5.1).",
+		"orchestra/foundation": "Allow using orchestra/extension with Orchestra Platform (~3.1)."
 	},
 	"extra": {
 		"branch-alias": {
-			"dev-master": "3.1-dev"
+			"dev-master": "3.2-dev"
 		}
 	},
 	"minimum-stability": "dev"
