@@ -1,21 +1,36 @@
 <?php namespace Orchestra\Publisher;
 
-use Illuminate\Support\ServiceProvider;
 use Orchestra\Publisher\Publishing\ViewPublisher;
 use Orchestra\Publisher\Publishing\AssetPublisher;
 use Orchestra\Publisher\Publishing\ConfigPublisher;
 use Orchestra\Publisher\Console\ViewPublishCommand;
 use Orchestra\Publisher\Console\AssetPublishCommand;
 use Orchestra\Publisher\Console\ConfigPublishCommand;
+use Orchestra\Support\Providers\CommandServiceProvider as ServiceProvider;
 
 class CommandServiceProvider extends ServiceProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
+     * The commands to be registered.
      *
-     * @var bool
+     * @var array
      */
-    protected $defer = true;
+    protected $commands = [
+        'AssetPublish'  => 'command.asset.publish',
+        'ConfigPublish' => 'command.config.publish',
+        'ViewPublish'   => 'command.view.publish',
+    ];
+
+    /**
+     * Additional provides.
+     *
+     * @var array
+     */
+    protected $provides = [
+        'asset.publisher',
+        'config.publisher',
+        'view.publisher',
+    ];
 
     /**
      * Register the service provider.
@@ -30,11 +45,7 @@ class CommandServiceProvider extends ServiceProvider
 
         $this->registerViewPublisher();
 
-        $this->commands([
-            'command.asset.publish',
-            'command.config.publish',
-            'command.view.publish',
-        ]);
+        parent::register();
     }
 
     /**
@@ -44,8 +55,6 @@ class CommandServiceProvider extends ServiceProvider
      */
     protected function registerAssetPublisher()
     {
-        $this->registerAssetPublishCommand();
-
         $this->app->singleton('asset.publisher', function ($app) {
             $publicPath = $app['path.public'];
 
@@ -53,6 +62,48 @@ class CommandServiceProvider extends ServiceProvider
             // web accessible public directory of an application so they can actually
             // be served to the browser. Otherwise, they would be locked in vendor.
             $publisher = new AssetPublisher($app['files'], $publicPath);
+
+            $publisher->setPackagePath($app['path.base'].'/vendor');
+
+            return $publisher;
+        });
+    }
+
+    /**
+     * Register the configuration publisher class and command.
+     *
+     * @return void
+     */
+    protected function registerConfigPublisher()
+    {
+        $this->app->singleton('config.publisher', function ($app) {
+            $path = $app['path.config'];
+
+            // Once we have created the configuration publisher, we will set the default
+            // package path on the object so that it knows where to find the packages
+            // that are installed for the application and can move them to the app.
+            $publisher = new ConfigPublisher($app['files'], $path);
+
+            $publisher->setPackagePath($app['path.base'].'/vendor');
+
+            return $publisher;
+        });
+    }
+
+    /**
+     * Register the view publisher class and command.
+     *
+     * @return void
+     */
+    protected function registerViewPublisher()
+    {
+        $this->app->singleton('view.publisher', function ($app) {
+            $viewPath = $app['path.base'].'/resources/views';
+
+            // Once we have created the view publisher, we will set the default packages
+            // path on this object so that it knows where to find all of the packages
+            // that are installed for the application and can move them to the app.
+            $publisher = new ViewPublisher($app['files'], $viewPath);
 
             $publisher->setPackagePath($app['path.base'].'/vendor');
 
@@ -73,29 +124,6 @@ class CommandServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the configuration publisher class and command.
-     *
-     * @return void
-     */
-    protected function registerConfigPublisher()
-    {
-        $this->registerConfigPublishCommand();
-
-        $this->app->singleton('config.publisher', function ($app) {
-            $path = $app['path.config'];
-
-            // Once we have created the configuration publisher, we will set the default
-            // package path on the object so that it knows where to find the packages
-            // that are installed for the application and can move them to the app.
-            $publisher = new ConfigPublisher($app['files'], $path);
-
-            $publisher->setPackagePath($app['path.base'].'/vendor');
-
-            return $publisher;
-        });
-    }
-
-    /**
      * Register the configuration publish console command.
      *
      * @return void
@@ -104,29 +132,6 @@ class CommandServiceProvider extends ServiceProvider
     {
         $this->app->singleton('command.config.publish', function ($app) {
             return new ConfigPublishCommand($app['config.publisher']);
-        });
-    }
-
-    /**
-     * Register the view publisher class and command.
-     *
-     * @return void
-     */
-    protected function registerViewPublisher()
-    {
-        $this->registerViewPublishCommand();
-
-        $this->app->singleton('view.publisher', function ($app) {
-            $viewPath = $app['path.base'].'/resources/views';
-
-            // Once we have created the view publisher, we will set the default packages
-            // path on this object so that it knows where to find all of the packages
-            // that are installed for the application and can move them to the app.
-            $publisher = new ViewPublisher($app['files'], $viewPath);
-
-            $publisher->setPackagePath($app['path.base'].'/vendor');
-
-            return $publisher;
         });
     }
 
@@ -140,20 +145,5 @@ class CommandServiceProvider extends ServiceProvider
         $this->app->singleton('command.view.publish', function ($app) {
             return new ViewPublishCommand($app['view.publisher']);
         });
-    }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return [
-            'asset.publisher',
-            'command.asset.publish',
-            'view.publisher',
-            'command.view.publish',
-        ];
     }
 }
