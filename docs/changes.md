@@ -3,6 +3,13 @@ title: Publisher Change Log
 
 ---
 
+## Version 3.1 {#v3-1}
+
+### v3.1.0 {#v3-1-0}
+
+* Update support to Laravel Framework v5.1.
+* Rename `Orchestra\Publisher\PublisherInterface` to `Orchestra\Contracts\Publisher\Publisher`.
+
 ## Version 3.0 {#v3-0}
 
 ### v3.0.0 {#v3-0-0}
