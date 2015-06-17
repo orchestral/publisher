@@ -56,14 +56,14 @@ class CommandServiceProvider extends ServiceProvider
     protected function registerAssetPublisher()
     {
         $this->app->singleton('asset.publisher', function ($app) {
-            $publicPath = $app['path.public'];
+            $publicPath = $app->publicPath();
 
             // The asset "publisher" is responsible for moving package's assets into the
             // web accessible public directory of an application so they can actually
             // be served to the browser. Otherwise, they would be locked in vendor.
-            $publisher = new AssetPublisher($app['files'], $publicPath);
+            $publisher = new AssetPublisher($app->make('files'), $publicPath);
 
-            $publisher->setPackagePath($app['path.base'].'/vendor');
+            $publisher->setPackagePath($app->basePath().'/vendor');
 
             return $publisher;
         });
@@ -77,14 +77,14 @@ class CommandServiceProvider extends ServiceProvider
     protected function registerConfigPublisher()
     {
         $this->app->singleton('config.publisher', function ($app) {
-            $path = $app['path.config'];
+            $path = $app->configPath();
 
             // Once we have created the configuration publisher, we will set the default
             // package path on the object so that it knows where to find the packages
             // that are installed for the application and can move them to the app.
-            $publisher = new ConfigPublisher($app['files'], $path);
+            $publisher = new ConfigPublisher($app->make('files'), $path);
 
-            $publisher->setPackagePath($app['path.base'].'/vendor');
+            $publisher->setPackagePath($app->basePath().'/vendor');
 
             return $publisher;
         });
@@ -98,14 +98,14 @@ class CommandServiceProvider extends ServiceProvider
     protected function registerViewPublisher()
     {
         $this->app->singleton('view.publisher', function ($app) {
-            $viewPath = $app['path.base'].'/resources/views';
+            $viewPath = $app->basePath().'/resources/views';
 
             // Once we have created the view publisher, we will set the default packages
             // path on this object so that it knows where to find all of the packages
             // that are installed for the application and can move them to the app.
-            $publisher = new ViewPublisher($app['files'], $viewPath);
+            $publisher = new ViewPublisher($app->make('files'), $viewPath);
 
-            $publisher->setPackagePath($app['path.base'].'/vendor');
+            $publisher->setPackagePath($app->basePath().'/vendor');
 
             return $publisher;
         });
@@ -119,7 +119,7 @@ class CommandServiceProvider extends ServiceProvider
     protected function registerAssetPublishCommand()
     {
         $this->app->singleton('command.asset.publish', function ($app) {
-            return new AssetPublishCommand($app['asset.publisher']);
+            return new AssetPublishCommand($app->make('asset.publisher'));
         });
     }
 
@@ -131,7 +131,7 @@ class CommandServiceProvider extends ServiceProvider
     protected function registerConfigPublishCommand()
     {
         $this->app->singleton('command.config.publish', function ($app) {
-            return new ConfigPublishCommand($app['config.publisher']);
+            return new ConfigPublishCommand($app->make('config.publisher'));
         });
     }
 
@@ -143,7 +143,7 @@ class CommandServiceProvider extends ServiceProvider
     protected function registerViewPublishCommand()
     {
         $this->app->singleton('command.view.publish', function ($app) {
-            return new ViewPublishCommand($app['view.publisher']);
+            return new ViewPublishCommand($app->make('view.publisher'));
         });
     }
 }

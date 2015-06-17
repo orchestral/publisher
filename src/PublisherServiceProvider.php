@@ -33,9 +33,9 @@ class PublisherServiceProvider extends ServiceProvider
         $this->app->singleton('orchestra.publisher.migrate', function ($app) {
             // In order to use migration, we need to boot 'migration.repository'
             // instance.
-            $app['migration.repository'];
+            $app->make('migration.repository');
 
-            return new MigrateManager($app, $app['migrator']);
+            return new MigrateManager($app, $app->make('migrator'));
         });
     }
 
@@ -47,7 +47,7 @@ class PublisherServiceProvider extends ServiceProvider
     protected function registerAssetPublisher()
     {
         $this->app->singleton('orchestra.publisher.asset', function ($app) {
-            return new AssetManager($app, $app['asset.publisher']);
+            return new AssetManager($app, $app->make('asset.publisher'));
         });
     }
 

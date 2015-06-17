@@ -78,9 +78,9 @@ class AssetManager implements Publisher
      */
     public function foundation()
     {
-        $path = rtrim($this->app['path.base'], '/').'/vendor/orchestra/foundation/resources/public';
+        $path = rtrim($this->app->basePath(), '/').'/vendor/orchestra/foundation/resources/public';
 
-        if (! $this->app['files']->isDirectory($path)) {
+        if (! $this->app->make('files')->isDirectory($path)) {
             return false;
         }
 
@@ -100,14 +100,15 @@ class AssetManager implements Publisher
      */
     protected function getPathFromExtensionName($name)
     {
-        $finder   = $this->app['orchestra.extension.finder'];
-        $basePath = rtrim($this->app['orchestra.extension']->option($name, 'path'), '/');
+        $finder   = $this->app->make('orchestra.extension.finder');
+        $files    = $this->app->make('files');
+        $basePath = rtrim($this->app->make('orchestra.extension')->option($name, 'path'), '/');
         $basePath = $finder->resolveExtensionPath($basePath);
 
         $paths = ["{$basePath}/resources/public", "{$basePath}/public"];
 
         foreach ($paths as $path) {
-            if ($this->app['files']->isDirectory($path)) {
+            if ($files->isDirectory($path)) {
                 return $path;
             }
         }
