@@ -70,7 +70,8 @@ class MigrateManager implements Publisher
      */
     public function package($name)
     {
-        $basePath   = rtrim($this->app['path.base'], '/');
+        $files      = $this->app->make('files');
+        $basePath   = rtrim($this->app->basePath(), '/');
         $vendorPath = "{$basePath}/vendor";
 
         $paths = [
@@ -80,7 +81,7 @@ class MigrateManager implements Publisher
         ];
 
         foreach ($paths as $path) {
-            if ($this->app['files']->isDirectory($path)) {
+            if ($files->isDirectory($path)) {
                 $this->run($path);
             }
         }
@@ -95,8 +96,9 @@ class MigrateManager implements Publisher
      */
     public function extension($name)
     {
-        $extension  = $this->app['orchestra.extension'];
-        $finder     = $this->app['orchestra.extension.finder'];
+        $files      = $this->app->make('files');
+        $extension  = $this->app->make('orchestra.extension');
+        $finder     = $this->app->make('orchestra.extension.finder');
         $basePath   = $finder->resolveExtensionPath(rtrim($extension->option($name, 'path'), '/'));
         $sourcePath = $finder->resolveExtensionPath(rtrim($extension->option($name, 'source-path'), '/'));
 
@@ -117,7 +119,7 @@ class MigrateManager implements Publisher
         }
 
         foreach ($paths as $path) {
-            if ($this->app['files']->isDirectory($path)) {
+            if ($files->isDirectory($path)) {
                 $this->run($path);
             }
         }

@@ -18,6 +18,6 @@ trait PublishingPathTrait
             return;
         }
 
-        return $this->laravel['path.base'].'/'.$path;
+        return $this->laravel->basePath().'/'.$path;
     }
 }
