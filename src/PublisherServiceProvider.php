@@ -1,6 +1,7 @@
 <?php namespace Orchestra\Publisher;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Foundation\Application;
 
 class PublisherServiceProvider extends ServiceProvider
 {
@@ -30,7 +31,7 @@ class PublisherServiceProvider extends ServiceProvider
      */
     protected function registerMigration()
     {
-        $this->app->singleton('orchestra.publisher.migrate', function ($app) {
+        $this->app->singleton('orchestra.publisher.migrate', function (Application $app) {
             // In order to use migration, we need to boot 'migration.repository'
             // instance.
             $app->make('migration.repository');
@@ -46,7 +47,7 @@ class PublisherServiceProvider extends ServiceProvider
      */
     protected function registerAssetPublisher()
     {
-        $this->app->singleton('orchestra.publisher.asset', function ($app) {
+        $this->app->singleton('orchestra.publisher.asset', function (Application $app) {
             return new AssetManager($app, $app->make('asset.publisher'));
         });
     }
