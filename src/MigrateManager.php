@@ -104,7 +104,6 @@ class MigrateManager implements Publisher
             "{$basePath}/resources/database/migrations/",
             "{$basePath}/resources/migrations/",
             "{$basePath}/database/migrations/",
-            "{$basePath}/src/migrations/",
         ];
 
         // We don't execute the same migration twice, this little code
@@ -114,7 +113,6 @@ class MigrateManager implements Publisher
                 "{$sourcePath}/resources/database/migrations/",
                 "{$sourcePath}/resources/migrations/",
                 "{$sourcePath}/database/migrations/",
-                "{$sourcePath}/src/migrations/",
             ]);
         }
 

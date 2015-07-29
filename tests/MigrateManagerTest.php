@@ -59,15 +59,12 @@ class MigrateManagerTest extends \PHPUnit_Framework_TestCase
         $files->shouldReceive('isDirectory')->once()->with('/var/www/laravel/vendor/foo/bar/resources/database/migrations/')->andReturn(true)
             ->shouldReceive('isDirectory')->once()->with('/var/www/laravel/vendor/foo/bar/resources/migrations/')->andReturn(false)
             ->shouldReceive('isDirectory')->once()->with('/var/www/laravel/vendor/foo/bar/database/migrations/')->andReturn(false)
-            ->shouldReceive('isDirectory')->once()->with('/var/www/laravel/vendor/foo/bar/src/migrations/')->andReturn(false)
             ->shouldReceive('isDirectory')->once()->with('/var/www/laravel/app/foo/bar/resources/database/migrations/')->andReturn(false)
             ->shouldReceive('isDirectory')->once()->with('/var/www/laravel/app/foo/bar/resources/migrations/')->andReturn(false)
             ->shouldReceive('isDirectory')->once()->with('/var/www/laravel/app/foo/bar/database/migrations/')->andReturn(false)
-            ->shouldReceive('isDirectory')->once()->with('/var/www/laravel/app/foo/bar/src/migrations/')->andReturn(false)
             ->shouldReceive('isDirectory')->once()->with('/var/www/laravel/laravel/framework/resources/database/migrations/')->andReturn(false)
             ->shouldReceive('isDirectory')->once()->with('/var/www/laravel/laravel/framework/resources/migrations/')->andReturn(false)
-            ->shouldReceive('isDirectory')->once()->with('/var/www/laravel/laravel/framework/database/migrations/')->andReturn(false)
-            ->shouldReceive('isDirectory')->once()->with('/var/www/laravel/laravel/framework/src/migrations/')->andReturn(false);
+            ->shouldReceive('isDirectory')->once()->with('/var/www/laravel/laravel/framework/database/migrations/')->andReturn(false);
         $migrator->shouldReceive('getRepository')->once()->andReturn($repository)
             ->shouldReceive('run')->once()->with('/var/www/laravel/vendor/foo/bar/resources/database/migrations/')->andReturn(null);
         $repository->shouldReceive('repositoryExists')->once()->andReturn(true)
@@ -97,7 +94,6 @@ class MigrateManagerTest extends \PHPUnit_Framework_TestCase
 
         $files->shouldReceive('isDirectory')->once()->with('/var/www/laravel/resources/database/migrations/')->andReturn(true)
             ->shouldReceive('isDirectory')->once()->with('/var/www/laravel/resources/migrations/')->andReturn(false)
-            ->shouldReceive('isDirectory')->once()->with('/var/www/laravel/src/migrations/')->andReturn(false)
             ->shouldReceive('isDirectory')->once()->with('/var/www/laravel/database/migrations/')->andReturn(false);
         $migrator->shouldReceive('getRepository')->once()->andReturn($repository)
             ->shouldReceive('run')->once()->with('/var/www/laravel/resources/database/migrations/')->andReturn(null);
