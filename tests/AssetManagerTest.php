@@ -107,14 +107,14 @@ class AssetManagerTest extends \PHPUnit_Framework_TestCase
     {
         $app = $this->app;
         $app['files'] = $files = m::mock('\Illuminate\Filesystem\Filesystem');
-        $app['path.base'] = '/foo/path/';
+        $app['path.base'] = '/var/www/laravel/';
 
         $publisher = m::mock('\Orchestra\Publisher\Publishing\AssetPublisher');
 
         $files->shouldReceive('isDirectory')->once()
-            ->with('/foo/path/vendor/orchestra/foundation/resources/public')->andReturn(true);
+            ->with('/var/www/laravel/vendor/orchestra/foundation/resources/public')->andReturn(true);
         $publisher->shouldReceive('publish')->once()
-            ->with('orchestra/foundation', '/foo/path/vendor/orchestra/foundation/resources/public')->andReturn(true);
+            ->with('orchestra/foundation', '/var/www/laravel/vendor/orchestra/foundation/resources/public')->andReturn(true);
 
         $stub = new AssetManager($app, $publisher);
         $this->assertTrue($stub->foundation());
@@ -130,12 +130,12 @@ class AssetManagerTest extends \PHPUnit_Framework_TestCase
     {
         $app = $this->app;
         $app['files'] = $files = m::mock('\Illuminate\Filesystem\Filesystem');
-        $app['path.base'] = '/foo/path/';
+        $app['path.base'] = '/var/www/laravel/';
 
         $publisher = m::mock('\Orchestra\Publisher\Publishing\AssetPublisher');
 
         $files->shouldReceive('isDirectory')->once()
-            ->with('/foo/path/vendor/orchestra/foundation/resources/public')->andReturn(false);
+            ->with('/var/www/laravel/vendor/orchestra/foundation/resources/public')->andReturn(false);
 
         $stub = new AssetManager($app, $publisher);
         $this->assertFalse($stub->foundation());
@@ -151,14 +151,14 @@ class AssetManagerTest extends \PHPUnit_Framework_TestCase
     {
         $app = $this->app;
         $app['files'] = $files = m::mock('\Illuminate\Filesystem\Filesystem');
-        $app['path.base'] = '/foo/path/';
+        $app['path.base'] = '/var/www/laravel/';
 
         $publisher = m::mock('\Orchestra\Publisher\Publishing\AssetPublisher');
 
         $files->shouldReceive('isDirectory')->once()
-            ->with('/foo/path/vendor/orchestra/foundation/resources/public')->andReturn(true);
+            ->with('/var/www/laravel/vendor/orchestra/foundation/resources/public')->andReturn(true);
         $publisher->shouldReceive('publish')->once()
-            ->with('orchestra/foundation', '/foo/path/vendor/orchestra/foundation/resources/public')->andThrow('Exception');
+            ->with('orchestra/foundation', '/var/www/laravel/vendor/orchestra/foundation/resources/public')->andThrow('Exception');
 
         $stub = new AssetManager($app, $publisher);
         $stub->foundation();
