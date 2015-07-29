@@ -96,16 +96,9 @@ class MigrateManager implements Publisher
      */
     public function extension($name)
     {
-        $files     = $this->app->make('files');
-        $extension = $this->app->make('orchestra.extension');
-        $finder    = $this->app->make('orchestra.extension.finder');
+        $files = $this->app->make('files');
 
-        if ($name === 'app') {
-            $basePath = $sourcePath = $this->app->basePath();
-        } else {
-            $basePath   = $finder->resolveExtensionPath(rtrim($extension->option($name, 'path'), '/'));
-            $sourcePath = $finder->resolveExtensionPath(rtrim($extension->option($name, 'source-path'), '/'));
-        }
+        list($basePath, $sourcePath) = $this->getPathFromExtensionName($name);
 
         $paths = [
             "{$basePath}/resources/database/migrations/",
@@ -139,5 +132,27 @@ class MigrateManager implements Publisher
     {
         $this->package('orchestra/memory');
         $this->package('orchestra/auth');
+    }
+
+    /**
+     * Get path from extension name.
+     *
+     * @param  string  $name
+     *
+     * @return array
+     */
+    protected function getPathFromExtensionName($name)
+    {
+        $extension = $this->app->make('orchestra.extension');
+        $finder    = $this->app->make('orchestra.extension.finder');
+
+        if ($name === 'app') {
+            $basePath = $sourcePath = $this->app->basePath();
+        } else {
+            $basePath   = $finder->resolveExtensionPath(rtrim($extension->option($name, 'path'), '/'));
+            $sourcePath = $finder->resolveExtensionPath(rtrim($extension->option($name, 'source-path'), '/'));
+        }
+
+        return [$basePath, $sourcePath];
     }
 }

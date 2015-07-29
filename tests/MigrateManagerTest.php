@@ -26,12 +26,12 @@ class MigrateManagerTest extends \PHPUnit_Framework_TestCase
         $repository = m::mock('\Illuminate\Database\Migrations\DatabaseMigrationRepository');
 
         $migrator->shouldReceive('getRepository')->once()->andReturn($repository)
-            ->shouldReceive('run')->once()->with('/foo/path/migrations')->andReturn(null);
+            ->shouldReceive('run')->once()->with('/var/www/laravel/migrations')->andReturn(null);
         $repository->shouldReceive('repositoryExists')->once()->andReturn(false)
             ->shouldReceive('createRepository')->once()->andReturn(null);
 
         $stub = new MigrateManager($app, $migrator);
-        $stub->run('/foo/path/migrations');
+        $stub->run('/var/www/laravel/migrations');
     }
 
     /**
@@ -44,8 +44,8 @@ class MigrateManagerTest extends \PHPUnit_Framework_TestCase
         $app = new Container();
         $app['migrator'] = $migrator = m::mock('\Illuminate\Database\Migrations\Migrator');
         $app['files'] = $files = m::mock('\Illuminate\Filesystem\Filesystem');
-        $app['orchestra.extension'] = $extension = m::mock('\Orchestra\Extension\Factory');
-        $app['orchestra.extension.finder'] = $finder = m::mock('\Orchestra\Extension\Finder');
+        $app['orchestra.extension'] = $extension = m::mock('\Orchestra\Contracts\Extension\Factory');
+        $app['orchestra.extension.finder'] = $finder = m::mock('\Orchestra\Contracts\Extension\Finder');
 
         $repository = m::mock('\Illuminate\Database\Migrations\DatabaseMigrationRepository');
 
@@ -86,20 +86,20 @@ class MigrateManagerTest extends \PHPUnit_Framework_TestCase
         $files = m::mock('\Illuminate\Filesystem\Filesystem');
         $migrator = m::mock('\Illuminate\Database\Migrations\Migrator');
 
-        $app->shouldReceive('basePath')->twice()->andReturn('/foo/path/')
+        $app->shouldReceive('basePath')->twice()->andReturn('/var/www/laravel')
             ->shouldReceive('make')->twice()->with('files')->andReturn($files);
 
         $repository = m::mock('\Illuminate\Database\Migrations\DatabaseMigrationRepository');
 
-        $files->shouldReceive('isDirectory')->once()->with('/foo/path/vendor/orchestra/memory/resources/database/migrations/')->andReturn(true)
-            ->shouldReceive('isDirectory')->once()->with('/foo/path/vendor/orchestra/memory/database/migrations/')->andReturn(false)
-            ->shouldReceive('isDirectory')->once()->with('/foo/path/vendor/orchestra/memory/migrations/')->andReturn(false)
-            ->shouldReceive('isDirectory')->once()->with('/foo/path/vendor/orchestra/auth/resources/database/migrations/')->andReturn(true)
-            ->shouldReceive('isDirectory')->once()->with('/foo/path/vendor/orchestra/auth/database/migrations/')->andReturn(false)
-            ->shouldReceive('isDirectory')->once()->with('/foo/path/vendor/orchestra/auth/migrations/')->andReturn(false);
+        $files->shouldReceive('isDirectory')->once()->with('/var/www/laravel/vendor/orchestra/memory/resources/database/migrations/')->andReturn(true)
+            ->shouldReceive('isDirectory')->once()->with('/var/www/laravel/vendor/orchestra/memory/database/migrations/')->andReturn(false)
+            ->shouldReceive('isDirectory')->once()->with('/var/www/laravel/vendor/orchestra/memory/migrations/')->andReturn(false)
+            ->shouldReceive('isDirectory')->once()->with('/var/www/laravel/vendor/orchestra/auth/resources/database/migrations/')->andReturn(true)
+            ->shouldReceive('isDirectory')->once()->with('/var/www/laravel/vendor/orchestra/auth/database/migrations/')->andReturn(false)
+            ->shouldReceive('isDirectory')->once()->with('/var/www/laravel/vendor/orchestra/auth/migrations/')->andReturn(false);
         $migrator->shouldReceive('getRepository')->twice()->andReturn($repository)
-            ->shouldReceive('run')->once()->with('/foo/path/vendor/orchestra/memory/resources/database/migrations/')->andReturn(null)
-            ->shouldReceive('run')->once()->with('/foo/path/vendor/orchestra/auth/resources/database/migrations/')->andReturn(null);
+            ->shouldReceive('run')->once()->with('/var/www/laravel/vendor/orchestra/memory/resources/database/migrations/')->andReturn(null)
+            ->shouldReceive('run')->once()->with('/var/www/laravel/vendor/orchestra/auth/resources/database/migrations/')->andReturn(null);
         $repository->shouldReceive('repositoryExists')->twice()->andReturn(true)
             ->shouldReceive('createRepository')->never()->andReturn(null);
 
