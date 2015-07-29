@@ -103,6 +103,7 @@ class MigrateManager implements Publisher
         $paths = [
             "{$basePath}/resources/database/migrations/",
             "{$basePath}/resources/migrations/",
+            "{$basePath}/database/migrations/",
             "{$basePath}/src/migrations/",
         ];
 
@@ -112,6 +113,7 @@ class MigrateManager implements Publisher
             $paths = array_merge($paths, [
                 "{$sourcePath}/resources/database/migrations/",
                 "{$sourcePath}/resources/migrations/",
+                "{$sourcePath}/database/migrations/",
                 "{$sourcePath}/src/migrations/",
             ]);
         }
