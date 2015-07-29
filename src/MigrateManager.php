@@ -96,11 +96,16 @@ class MigrateManager implements Publisher
      */
     public function extension($name)
     {
-        $files      = $this->app->make('files');
-        $extension  = $this->app->make('orchestra.extension');
-        $finder     = $this->app->make('orchestra.extension.finder');
-        $basePath   = $finder->resolveExtensionPath(rtrim($extension->option($name, 'path'), '/'));
-        $sourcePath = $finder->resolveExtensionPath(rtrim($extension->option($name, 'source-path'), '/'));
+        $files     = $this->app->make('files');
+        $extension = $this->app->make('orchestra.extension');
+        $finder    = $this->app->make('orchestra.extension.finder');
+
+        if ($name === 'app') {
+            $basePath = $sourcePath = $this->app->basePath();
+        } else {
+            $basePath   = $finder->resolveExtensionPath(rtrim($extension->option($name, 'path'), '/'));
+            $sourcePath = $finder->resolveExtensionPath(rtrim($extension->option($name, 'source-path'), '/'));
+        }
 
         $paths = [
             "{$basePath}/resources/database/migrations/",
