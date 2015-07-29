@@ -21,8 +21,8 @@ class MigrateManagerTest extends \PHPUnit_Framework_TestCase
      */
     public function testRunMethod()
     {
-        $app        = new Container();
-        $migrator   = m::mock('\Illuminate\Database\Migrations\Migrator');
+        $app = new Container();
+        $migrator = m::mock('\Illuminate\Database\Migrations\Migrator');
         $repository = m::mock('\Illuminate\Database\Migrations\DatabaseMigrationRepository');
 
         $migrator->shouldReceive('getRepository')->once()->andReturn($repository)

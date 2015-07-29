@@ -5,6 +5,10 @@ title: Publisher Change Log
 
 ## Version 3.1 {#v3-1}
 
+### v3.1.2 {#v3-1-2}
+
+* Ensure app migration is published when activating app as an extension.
+
 ### v3.1.1 {#v3-1-1}
 
 * Improved performances by reducing call within `Illuminate\Container\Container`.
@@ -15,6 +19,10 @@ title: Publisher Change Log
 * Rename `Orchestra\Publisher\PublisherInterface` to `Orchestra\Contracts\Publisher\Publisher`.
 
 ## Version 3.0 {#v3-0}
+
+### v3.0.1 {#v3-0-1}
+
+* Ensure app migration is published when activating app as an extension.
 
 ### v3.0.0 {#v3-0-0}
 
