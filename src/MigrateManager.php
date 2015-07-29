@@ -96,15 +96,14 @@ class MigrateManager implements Publisher
      */
     public function extension($name)
     {
-        $files      = $this->app->make('files');
-        $extension  = $this->app->make('orchestra.extension');
-        $finder     = $this->app->make('orchestra.extension.finder');
-        $basePath   = $finder->resolveExtensionPath(rtrim($extension->option($name, 'path'), '/'));
-        $sourcePath = $finder->resolveExtensionPath(rtrim($extension->option($name, 'source-path'), '/'));
+        $files = $this->app->make('files');
+
+        list($basePath, $sourcePath) = $this->getPathFromExtensionName($name);
 
         $paths = [
             "{$basePath}/resources/database/migrations/",
             "{$basePath}/resources/migrations/",
+            "{$basePath}/database/migrations/",
             "{$basePath}/src/migrations/",
         ];
 
@@ -114,6 +113,7 @@ class MigrateManager implements Publisher
             $paths = array_merge($paths, [
                 "{$sourcePath}/resources/database/migrations/",
                 "{$sourcePath}/resources/migrations/",
+                "{$sourcePath}/database/migrations/",
                 "{$sourcePath}/src/migrations/",
             ]);
         }
@@ -134,5 +134,27 @@ class MigrateManager implements Publisher
     {
         $this->package('orchestra/memory');
         $this->package('orchestra/auth');
+    }
+
+    /**
+     * Get path from extension name.
+     *
+     * @param  string  $name
+     *
+     * @return array
+     */
+    protected function getPathFromExtensionName($name)
+    {
+        $extension = $this->app->make('orchestra.extension');
+        $finder    = $this->app->make('orchestra.extension.finder');
+
+        if ($name === 'app') {
+            $basePath = $sourcePath = $this->app->basePath();
+        } else {
+            $basePath   = $finder->resolveExtensionPath(rtrim($extension->option($name, 'path'), '/'));
+            $sourcePath = $finder->resolveExtensionPath(rtrim($extension->option($name, 'source-path'), '/'));
+        }
+
+        return [$basePath, $sourcePath];
     }
 }

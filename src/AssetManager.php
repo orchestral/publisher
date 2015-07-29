@@ -100,10 +100,15 @@ class AssetManager implements Publisher
      */
     protected function getPathFromExtensionName($name)
     {
-        $finder   = $this->app->make('orchestra.extension.finder');
-        $files    = $this->app->make('files');
-        $basePath = rtrim($this->app->make('orchestra.extension')->option($name, 'path'), '/');
-        $basePath = $finder->resolveExtensionPath($basePath);
+        $finder = $this->app->make('orchestra.extension.finder');
+        $files  = $this->app->make('files');
+
+        if ($name === 'app') {
+            $basePath = $this->app->basePath();
+        } else {
+            $basePath = rtrim($this->app->make('orchestra.extension')->option($name, 'path'), '/');
+            $basePath = $finder->resolveExtensionPath($basePath);
+        }
 
         $paths = ["{$basePath}/resources/public", "{$basePath}/public"];
 
