@@ -5,6 +5,10 @@ title: Publisher Change Log
 
 ## Version 3.1 {#v3-1}
 
+### v3.1.2 {#v3-1-2}
+
+* Ensure app migration is published when activating app as an extension.
+
 ### v3.1.1 {#v3-1-1}
 
 * Improved performances by reducing call within `Illuminate\Container\Container`.
