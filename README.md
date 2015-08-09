@@ -54,8 +54,8 @@ Add following service providers in `config/app.php`.
 
 	// ...
 
-	'Orchestra\Publisher\PublisherServiceProvider',
-    'Orchestra\Publisher\CommandServiceProvider',
+	Orchestra\Publisher\PublisherServiceProvider::class,
+    Orchestra\Publisher\CommandServiceProvider::class,
 ],
 ```
 
