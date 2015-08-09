@@ -1,12 +1,12 @@
 Publisher Component for Orchestra Platform
 ==============
 
-[![Latest Stable Version](https://img.shields.io/github/release/orchestral/publisher.svg?style=flat)](https://packagist.org/packages/orchestra/publisher)
-[![Total Downloads](https://img.shields.io/packagist/dt/orchestra/publisher.svg?style=flat)](https://packagist.org/packages/orchestra/publisher)
-[![MIT License](https://img.shields.io/packagist/l/orchestra/publisher.svg?style=flat)](https://packagist.org/packages/orchestra/publisher)
-[![Build Status](https://img.shields.io/travis/orchestral/publisher/3.1.svg?style=flat)](https://travis-ci.org/orchestral/publisher)
-[![Coverage Status](https://img.shields.io/coveralls/orchestral/publisher/3.1.svg?style=flat)](https://coveralls.io/r/orchestral/publisher?branch=3.1)
-[![Scrutinizer Quality Score](https://img.shields.io/scrutinizer/g/orchestral/publisher/3.1.svg?style=flat)](https://scrutinizer-ci.com/g/orchestral/publisher/)
+[![Latest Stable Version](https://img.shields.io/github/release/orchestral/publisher.svg?style=flat-square)](https://packagist.org/packages/orchestra/publisher)
+[![Total Downloads](https://img.shields.io/packagist/dt/orchestra/publisher.svg?style=flat-square)](https://packagist.org/packages/orchestra/publisher)
+[![MIT License](https://img.shields.io/packagist/l/orchestra/publisher.svg?style=flat-square)](https://packagist.org/packages/orchestra/publisher)
+[![Build Status](https://img.shields.io/travis/orchestral/publisher/3.1.svg?style=flat-square)](https://travis-ci.org/orchestral/publisher)
+[![Coverage Status](https://img.shields.io/coveralls/orchestral/publisher/3.1.svg?style=flat-square)](https://coveralls.io/r/orchestral/publisher?branch=3.1)
+[![Scrutinizer Quality Score](https://img.shields.io/scrutinizer/g/orchestral/publisher/3.1.svg?style=flat-square)](https://scrutinizer-ci.com/g/orchestral/publisher/)
 
 ## Table of Content
 
@@ -53,8 +53,8 @@ Add following service providers in `config/app.php`.
 
 	// ...
 
-	'Orchestra\Publisher\PublisherServiceProvider',
-    'Orchestra\Publisher\CommandServiceProvider',
+	Orchestra\Publisher\PublisherServiceProvider::class,
+    Orchestra\Publisher\CommandServiceProvider::class,
 ],
 ```
 
