@@ -4,9 +4,9 @@ Publisher Component for Orchestra Platform
 [![Latest Stable Version](https://img.shields.io/github/release/orchestral/publisher.svg?style=flat-square)](https://packagist.org/packages/orchestra/publisher)
 [![Total Downloads](https://img.shields.io/packagist/dt/orchestra/publisher.svg?style=flat-square)](https://packagist.org/packages/orchestra/publisher)
 [![MIT License](https://img.shields.io/packagist/l/orchestra/publisher.svg?style=flat-square)](https://packagist.org/packages/orchestra/publisher)
-[![Build Status](https://img.shields.io/travis/orchestral/publisher/3.2.svg?style=flat-square)](https://travis-ci.org/orchestral/publisher)
-[![Coverage Status](https://img.shields.io/coveralls/orchestral/publisher/3.2.svg?style=flat-square)](https://coveralls.io/r/orchestral/publisher?branch=3.2)
-[![Scrutinizer Quality Score](https://img.shields.io/scrutinizer/g/orchestral/publisher/3.2.svg?style=flat-square)](https://scrutinizer-ci.com/g/orchestral/publisher/)
+[![Build Status](https://img.shields.io/travis/orchestral/publisher/master.svg?style=flat-square)](https://travis-ci.org/orchestral/publisher)
+[![Coverage Status](https://img.shields.io/coveralls/orchestral/publisher/master.svg?style=flat-square)](https://coveralls.io/r/orchestral/publisher?branch=master)
+[![Scrutinizer Quality Score](https://img.shields.io/scrutinizer/g/orchestral/publisher/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/orchestral/publisher/)
 
 ## Table of Content
 
@@ -24,6 +24,7 @@ Laravel    | Publisher
  5.0.x     | 3.0.x
  5.1.x     | 3.1.x
  5.2.x     | 3.2.x@dev
+ 5.3.x     | 3.3.x@dev
 
 ## Installation
 
@@ -62,4 +63,4 @@ Add following service providers in `config/app.php`.
 ## Resources
 
 * [Documentation](http://orchestraplatform.com/docs/latest/components/publisher)
-* [Change Log](http://orchestraplatform.com/docs/latest/components/publisher/changes#v3-2)
+* [Change Log](http://orchestraplatform.com/docs/latest/components/publisher/changes#v3-3)
