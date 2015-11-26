@@ -62,4 +62,4 @@ Add following service providers in `config/app.php`.
 ## Resources
 
 * [Documentation](http://orchestraplatform.com/docs/latest/components/publisher)
-* [Change Log](http://orchestraplatform.com/docs/latest/components/publisher/changes#v3-1)
+* [Change Log](http://orchestraplatform.com/docs/latest/components/publisher/changes#v3-2)
