@@ -30,9 +30,9 @@ To install through composer, simply put the following in your `composer.json` fi
 
 ```json
 {
-	"require": {
-		"orchestra/publisher": "~3.0"
-	}
+    "require": {
+        "orchestra/publisher": "~3.0"
+    }
 }
 ```
 
@@ -51,9 +51,9 @@ Add following service providers in `config/app.php`.
 ```php
 'providers' => [
 
-	// ...
+    // ...
 
-	Orchestra\Publisher\PublisherServiceProvider::class,
+    Orchestra\Publisher\PublisherServiceProvider::class,
     Orchestra\Publisher\CommandServiceProvider::class,
 ],
 ```
