@@ -1,15 +1,11 @@
 <?php namespace Orchestra\Publisher\Console;
 
-use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Orchestra\Publisher\Publishing\AssetPublisher;
-use Orchestra\Publisher\Console\Traits\PublishingPathTrait;
 
 class AssetPublishCommand extends Command
 {
-    use PublishingPathTrait;
-
     /**
      * The console command name.
      *

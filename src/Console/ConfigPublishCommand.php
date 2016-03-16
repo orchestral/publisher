@@ -1,15 +1,13 @@
 <?php namespace Orchestra\Publisher\Console;
 
-use Illuminate\Console\Command;
 use Illuminate\Console\ConfirmableTrait;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Orchestra\Publisher\Publishing\ConfigPublisher;
-use Orchestra\Publisher\Console\Traits\PublishingPathTrait;
 
 class ConfigPublishCommand extends Command
 {
-    use ConfirmableTrait, PublishingPathTrait;
+    use ConfirmableTrait;
 
     /**
      * The console command name.
