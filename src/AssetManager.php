@@ -1,4 +1,6 @@
-<?php namespace Orchestra\Publisher;
+<?php
+
+namespace Orchestra\Publisher;
 
 use Exception;
 use Orchestra\Contracts\Publisher\Publisher;

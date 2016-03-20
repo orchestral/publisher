@@ -1,4 +1,6 @@
-<?php namespace Orchestra\Publisher\Publishing;
+<?php
+
+namespace Orchestra\Publisher\Publishing;
 
 use InvalidArgumentException;
 

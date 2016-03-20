@@ -1,4 +1,6 @@
-<?php namespace Orchestra\Publisher;
+<?php
+
+namespace Orchestra\Publisher;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Foundation\Application;

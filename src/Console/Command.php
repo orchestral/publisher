@@ -1,4 +1,6 @@
-<?php namespace Orchestra\Publisher\Console;
+<?php
+
+namespace Orchestra\Publisher\Console;
 
 use Illuminate\Console\Command as BaseCommand;
 

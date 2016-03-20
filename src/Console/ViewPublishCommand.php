@@ -1,4 +1,6 @@
-<?php namespace Orchestra\Publisher\Console;
+<?php
+
+namespace Orchestra\Publisher\Console;
 
 use Symfony\Component\Console\Input\InputOption;
 use Orchestra\Publisher\Publishing\ViewPublisher;
