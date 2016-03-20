@@ -1,14 +1,13 @@
 <?php namespace Orchestra\Publisher\Console;
 
-use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Orchestra\Publisher\Publishing\ViewPublisher;
 use Symfony\Component\Console\Input\InputArgument;
-use Orchestra\Publisher\Console\Traits\PublishingPathTrait;
+use Orchestra\Publisher\Console\Traits\PublishingPath;
 
 class ViewPublishCommand extends Command
 {
-    use PublishingPathTrait;
+    use PublishingPath;
 
     /**
      * The console command name.
