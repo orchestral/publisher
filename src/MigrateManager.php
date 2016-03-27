@@ -70,9 +70,14 @@ class MigrateManager implements Publisher
      */
     public function package($name)
     {
-        $files      = $this->app->make('files');
-        $basePath   = rtrim($this->app->basePath(), '/');
-        $vendorPath = "{$basePath}/vendor";
+        $files = $this->app->make('files');
+
+        if (! method_exists($this->app, 'vendorPath')) {
+            $vendorPath = rtrim($this->app->vendorPath(), '/');
+        } else {
+            $basePath   = rtrim($this->app->basePath(), '/');
+            $vendorPath = "{$basePath}/vendor";
+        }
 
         $paths = [
             "{$vendorPath}/{$name}/resources/database/migrations/",
