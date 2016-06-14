@@ -1,5 +1,7 @@
 <?php
 
+namespace Orchestra\Publisher\TestCase\Console;
+
 use Mockery as m;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
