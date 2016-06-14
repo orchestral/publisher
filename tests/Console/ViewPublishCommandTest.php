@@ -1,4 +1,6 @@
-<?php namespace Orchestra\Publisher\Console\TestCase;
+<?php
+
+namespace Orchestra\Publisher\TestCase\Console;
 
 use Mockery as m;
 use Symfony\Component\Console\Input\ArrayInput;
