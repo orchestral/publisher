@@ -3,6 +3,13 @@ title: Publisher Change Log
 
 ---
 
+## Version 3.3 {#v3-3}
+
+### v3.3.0 {#v3-3-0}
+
+* Update support to Laravel Framework v5.3.
+* Allow to use `vendorPath()` under `Orchestra\Publisher\MigrateManager`.
+
 ## Version 3.2 {#v3-2}
 
 ### v3.2.1 {#v3-2-1}
