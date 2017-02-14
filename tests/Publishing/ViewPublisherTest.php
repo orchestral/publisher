@@ -3,9 +3,10 @@
 namespace Orchestra\Publisher\Publishing\TestCase;
 
 use Mockery as m;
+use PHPUnit\Framework\TestCase;
 use Orchestra\Publisher\Publishing\ViewPublisher;
 
-class ViewPublisherTest extends \PHPUnit_Framework_TestCase
+class ViewPublisherTest extends TestCase
 {
     public function tearDown()
     {

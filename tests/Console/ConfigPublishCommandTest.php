@@ -3,11 +3,12 @@
 namespace Orchestra\Publisher\TestCase\Console;
 
 use Mockery as m;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
 use Orchestra\Publisher\Console\ConfigPublishCommand;
 
-class ConfigPublishCommandTest extends \PHPUnit_Framework_TestCase
+class ConfigPublishCommandTest extends TestCase
 {
     public function tearDown()
     {

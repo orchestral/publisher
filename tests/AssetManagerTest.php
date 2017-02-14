@@ -3,10 +3,11 @@
 namespace Orchestra\Publisher\TestCase;
 
 use Mockery as m;
+use PHPUnit\Framework\TestCase;
 use Illuminate\Container\Container;
 use Orchestra\Publisher\AssetManager;
 
-class AssetManagerTest extends \PHPUnit_Framework_TestCase
+class AssetManagerTest extends TestCase
 {
     /**
      * Teardown the test environment.
