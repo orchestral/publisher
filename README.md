@@ -19,8 +19,7 @@ Publisher Component for Orchestra Platform
 
 Laravel    | Publisher
 :----------|:----------
- 4.1.x     | 2.1.x
- 4.2.x     | 2.2.x
+ 4.x.x     | 2.x.x
  5.0.x     | 3.0.x
  5.1.x     | 3.1.x
  5.2.x     | 3.2.x
